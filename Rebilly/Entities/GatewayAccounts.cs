@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Rebilly.Entities
 {
-    public class Entity
+    public class GatewayAccounts : Entity
     {
     }
 }
-    

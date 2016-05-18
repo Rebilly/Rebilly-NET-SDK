@@ -4,10 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Rebilly.Entities
+namespace Rebilly.Services
 {
-    public class Entity
+    public class Service
     {
+        public void Load()
+        {
+
+        }
     }
 }
-    
