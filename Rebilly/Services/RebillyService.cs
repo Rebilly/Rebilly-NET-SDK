@@ -1,12 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+
+using Rebilly.Clients;
+
+
 
 namespace Rebilly.Services
 {
-    class RebillyService
+    public class RebillyService<TEntity> : Service<TEntity>
     {
+        private IDataClient<TEntity> _Client = null;
+        public RebillyService(IDataClient<TEntity> client)
+        {
+            _Client = client;
+        }
+
+
+        public IList<TEntity> Search(RebillySearchArguments arguments = null)
+        {
+            return _Client.Get("");
+        }
     }
 }

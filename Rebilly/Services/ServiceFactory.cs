@@ -1,8 +1,7 @@
 ﻿
 namespace Rebilly.Services
 {
-    public class Service<TEntity>
+    public class ServiceFactory
     {
-
     }
 }

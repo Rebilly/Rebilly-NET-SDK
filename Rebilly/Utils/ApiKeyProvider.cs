@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Rebilly.Entities
+namespace Rebilly.Utils
 {
-    public class GatewayAccounts : Entity
+    class ApiKeyProvider
     {
     }
 }
