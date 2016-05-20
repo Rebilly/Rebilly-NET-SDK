@@ -3,7 +3,9 @@
 
 namespace Rebilly.Services
 {
-    class WebsitesService : Service<Website>
+    public class WebsitesService : Service<Website>
     {
+        public WebsitesService() : base() { }
+        public WebsitesService(string dataProviderName) : base(dataProviderName) { }
     }
 }

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace Rebilly.Clients
+namespace Rebilly.Services
 {
-    public interface IDataClient<TEntity>
+    public interface IDataProvider<TEntity> : IPropertyBag
     {
         IList<TEntity> Get(string path, Dictionary<string, string> arguments = null);
     }

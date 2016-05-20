@@ -43,8 +43,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client.cs" />
-    <Compile Include="Clients\IDataClient.cs" />
-    <Compile Include="Clients\RESTClient.cs" />
+    <Compile Include="Entities\GatewayConfig.cs" />
+    <Compile Include="Middleware\Authenticator.cs" />
+    <Compile Include="Middleware\Logger.cs" />
+    <Compile Include="Services\DataProvider.cs" />
+    <Compile Include="Services\DataProviderFactory.cs" />
+    <Compile Include="Services\IDataProvider.cs" />
+    <Compile Include="Services\IPropertyBag.cs" />
+    <Compile Include="Services\MockRESTDataProvider.cs" />
+    <Compile Include="Services\PropertyBag.cs" />
+    <Compile Include="Services\Request.cs" />
+    <Compile Include="Services\Response.cs" />
+    <Compile Include="Services\RESTDataProvider.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\GatewayAccount.cs" />
     <Compile Include="Entities\Website.cs" />
@@ -53,15 +63,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\GatewayAccountsService.cs" />
     <Compile Include="Services\RebillySearchArguments.cs" />
-    <Compile Include="Services\RebillyService.cs" />
     <Compile Include="Services\Service.cs" />
+    <Compile Include="Services\IService.cs" />
     <Compile Include="Services\ServiceFactory.cs" />
     <Compile Include="Services\WebsitesService.cs" />
     <Compile Include="Utils\ApiKeyProvider.cs" />
+    <Compile Include="Utils\Pluralizer.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Middleware\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

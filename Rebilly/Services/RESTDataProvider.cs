@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -11,16 +9,17 @@ using Rebilly.Exceptions;
 
 using Newtonsoft.Json;
 
-namespace Rebilly.Clients
+namespace Rebilly.Services
 {
-    public class RESTClient<TEntity>
+    public class RESTDataProvider<TEntity> : DataProvider<TEntity>
     {
-        public string BaseUrl { get; set; }
-
-        public IList<TEntity> Get(string path, Dictionary<string, string> arguments = null)
+        public override IList<TEntity> Get(string path, Dictionary<string, string> arguments = null)
         {
             var RelativeUrl = CreateUrl(path, arguments);
             var Text = GetJsonText(RelativeUrl);
+
+            // Use: Middleware logger
+            Console.Write(Text);
 
             return JsonConvert.DeserializeObject<List<TEntity>>(Text);        
         }
@@ -41,27 +40,42 @@ namespace Rebilly.Clients
         {
             using (var Client = CreateClient())
             {
+                // TODO: how todo syncronous request: http://stackoverflow.com/questions/14435520/why-use-httpclient-for-synchronous-connection
                 return Client.GetStringAsync(relativeUrl).Result;
             }
         }
 
+
         private HttpClient CreateClient()
         {
+            AssertBaseUrlIsNotEmpty();
+            AssertApiKeyIsNotEmpty();
+
             var NewClient = new HttpClient();
-            NewClient.BaseAddress = new Uri(BaseUrl);
+            NewClient.BaseAddress = new Uri((string)this["BaseUrl"]);
 
             NewClient.DefaultRequestHeaders.Clear();
             NewClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            NewClient.DefaultRequestHeaders.Add("REB-APIKEY", (string)this["ApiKey"]);
 
             return NewClient;
         }
 
 
-        public void AssertBaseUrlIsNotEmpty()
+        private void AssertBaseUrlIsNotEmpty()
         {
-            if(!string.IsNullOrEmpty(BaseUrl))
+            if(!ContainsKey("BaseUrl"))
             {
                 throw new RebillyException("BaseUrl cannot be null or empty");
+            }
+        }
+
+        private void AssertApiKeyIsNotEmpty()
+        {
+            if(!ContainsKey("ApiKey"))
+            {
+                throw new RebillyException("ApiKey cannot be null or empty");
             }
         }
     }
