@@ -34,6 +34,11 @@ namespace Rebilly
             }
         }
 
+        public GatewayAccountsService GatewayAccounts()
+        {
+            return GetService<GatewayAccountsService>();
+        }
+
 
         public TService GetService<TService>() where TService : PropertyBag, IService, new()
         {

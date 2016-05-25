@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Client.cs" />
     <Compile Include="Entities\GatewayConfig.cs" />
+    <Compile Include="Entities\Organization.cs" />
     <Compile Include="Middleware\Authenticator.cs" />
     <Compile Include="Middleware\Logger.cs" />
     <Compile Include="Services\DataProvider.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="Services\IDataProvider.cs" />
     <Compile Include="Services\IPropertyBag.cs" />
     <Compile Include="Services\MockRESTDataProvider.cs" />
+    <Compile Include="Services\OrganizationsService.cs" />
     <Compile Include="Services\PropertyBag.cs" />
     <Compile Include="Services\Request.cs" />
     <Compile Include="Services\Response.cs" />

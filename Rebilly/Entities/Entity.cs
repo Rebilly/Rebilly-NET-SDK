@@ -7,7 +7,6 @@ namespace Rebilly.Entities
         public string Id { get; set; }
         public DateTime UpdatedTime { get; set;  }
         public DateTime CreatedTime { get; set; }
-
     }
 }
     

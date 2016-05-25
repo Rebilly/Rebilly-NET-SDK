@@ -11,6 +11,5 @@ namespace Rebilly.Entities
         public string WebHookUrl { get; set; }
         public string WebHookUsername { get; set; }
         public string WebHookPassword { get; set; }
-
     }
 }

@@ -56,7 +56,6 @@
   <ItemGroup>
     <Folder Include="Functional\" />
     <Folder Include="Integration\" />
-    <Folder Include="Unit\Clients\" />
     <Folder Include="Unit\Entities\" />
     <Folder Include="Unit\Exceptions\" />
   </ItemGroup>
