@@ -41,7 +41,16 @@ namespace Rebilly.Services
             using (var Client = CreateClient())
             {
                 // TODO: how todo syncronous request: http://stackoverflow.com/questions/14435520/why-use-httpclient-for-synchronous-connection
-                return Client.GetStringAsync(relativeUrl).Result;
+
+                var Request = new HttpRequestMessage();
+                Request.RequestUri = new Uri((string)this["BaseUrl"] + relativeUrl);
+
+                Request.Headers.Add("REB-APIKEY", (string)this["ApiKey"]);
+                Request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                var Response = Client.SendAsync(Request).Result;
+
+                return Response.Content.ReadAsStringAsync().Result;
             }
         }
 
@@ -52,12 +61,11 @@ namespace Rebilly.Services
             AssertApiKeyIsNotEmpty();
 
             var NewClient = new HttpClient();
-            NewClient.BaseAddress = new Uri((string)this["BaseUrl"]);
 
-            NewClient.DefaultRequestHeaders.Clear();
-            NewClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-            NewClient.DefaultRequestHeaders.Add("REB-APIKEY", (string)this["ApiKey"]);
+            //NewClient.BaseAddress = new Uri((string)this["BaseUrl"]);
+            //NewClient.DefaultRequestHeaders.Clear();
+            //NewClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            //DefaultRequestHeaders.Add("REB-APIKEY", (string)this["ApiKey"]);
 
             return NewClient;
         }

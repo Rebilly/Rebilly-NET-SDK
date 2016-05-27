@@ -6,6 +6,5 @@ namespace Rebilly.Entities
         public string MemberId { get; set;  }
         public long AVS { get; set; }
         public long Delay { get; set; }
-
     }
 }

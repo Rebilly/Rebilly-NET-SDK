@@ -47,6 +47,7 @@
     <Compile Include="Entities\Organization.cs" />
     <Compile Include="Middleware\Authenticator.cs" />
     <Compile Include="Middleware\Logger.cs" />
+    <Compile Include="Middleware\Middleware.cs" />
     <Compile Include="Services\DataProvider.cs" />
     <Compile Include="Services\DataProviderFactory.cs" />
     <Compile Include="Services\IDataProvider.cs" />

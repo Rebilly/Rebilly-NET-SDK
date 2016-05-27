@@ -12,13 +12,12 @@ namespace Rebilly.Entities
         public string OrganizationId { get; set; }
         public string Descriptor { get; set; }
         public string City { get; set; }
-        public bool DynamicDescriptor { get; set; }
+        public bool? DynamicDescriptor { get; set; }
         public bool? ThreeDSecure { get; set;  }
         public double? MonthlyLimit { get; set; }
 
         public string DowntimeStart { get; set; }
         public string DowntimeEnd { get; set; }
-
 
         public List<string> Websites { get; set; }
         public List<string> AcceptedCurrencies { get; set; }

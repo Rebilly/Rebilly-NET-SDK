@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Rebilly.Exceptions;
 
 namespace Rebilly.Services
@@ -20,16 +21,22 @@ namespace Rebilly.Services
                 throw new ArgumentNullException(serviceName);
             }
 
-            if(serviceName == "Websites")
+            switch(serviceName)
             {
-                return new WebsitesService(dataProviderName);
-            }
-            else if(serviceName == "GatewayAccounts")
-            {
-                return new GatewayAccountsService(dataProviderName);
-            }
-
-            throw new RebillyException(string.Format("Cannot find service {0}", serviceName));
+                case "Websites": 
+                {
+                    return new WebsitesService(dataProviderName);
+                }
+                case "GatewayAccounts":
+                {
+                    return new GatewayAccountsService(dataProviderName);
+                }
+                default:
+                {
+                    throw new RebillyException(string.Format("Cannot find service {0}", serviceName));
+                }
+            }            
         }
+
     }
 }
