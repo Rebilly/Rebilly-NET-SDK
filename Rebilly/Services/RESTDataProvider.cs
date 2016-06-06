@@ -18,9 +18,6 @@ namespace Rebilly.Services
             var RelativeUrl = CreateUrl(path, arguments);
             var Text = GetJsonText(RelativeUrl);
 
-            // Use: Middleware logger
-            Console.Write(Text);
-
             return JsonConvert.DeserializeObject<List<TEntity>>(Text);        
         }
 
@@ -45,12 +42,32 @@ namespace Rebilly.Services
                 var Request = new HttpRequestMessage();
                 Request.RequestUri = new Uri((string)this["BaseUrl"] + relativeUrl);
 
-                Request.Headers.Add("REB-APIKEY", (string)this["ApiKey"]);
+                ApplyMiddlewareToRequest(Request);
                 Request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 var Response = Client.SendAsync(Request).Result;
 
+                ApplyMiddlewareToResponse(Response);
+
                 return Response.Content.ReadAsStringAsync().Result;
+            }
+        }
+
+
+        private void ApplyMiddlewareToRequest(HttpRequestMessage request)
+        {
+            foreach(var middleware in Middleware)
+            {
+                middleware.OnRequest(request);
+            }
+        }
+
+
+        private void ApplyMiddlewareToResponse(HttpResponseMessage response)
+        {
+            foreach (var middleware in Middleware)
+            {
+                middleware.OnResponse(response);
             }
         }
 
@@ -61,12 +78,6 @@ namespace Rebilly.Services
             AssertApiKeyIsNotEmpty();
 
             var NewClient = new HttpClient();
-
-            //NewClient.BaseAddress = new Uri((string)this["BaseUrl"]);
-            //NewClient.DefaultRequestHeaders.Clear();
-            //NewClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            //DefaultRequestHeaders.Add("REB-APIKEY", (string)this["ApiKey"]);
-
             return NewClient;
         }
 

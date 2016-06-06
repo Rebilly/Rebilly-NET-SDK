@@ -1,10 +1,17 @@
 ﻿using System.Collections.Generic;
+using Rebilly.Middleware;
 
 namespace Rebilly.Services
 {
-    public class PropertyBag
+    public class ProviderBase
     {
         private Dictionary<string, object> _Properties = new Dictionary<string, object>();
+        public Stack<MiddlewareBase> Middleware { get; set; }
+
+        public ProviderBase()
+        {
+            Middleware = new Stack<MiddlewareBase>(); 
+        }
 
         public object this[string key]
         {
@@ -33,7 +40,7 @@ namespace Rebilly.Services
 
 
 
-        public void CopyPropertiesTo(IPropertyBag targetBag)
+        public void CopyPropertiesTo(IProviderBase targetBag)
         {
             foreach(var pair in _Properties)
             {

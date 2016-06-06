@@ -6,7 +6,7 @@ namespace Rebilly.Services
 {
     public class ServiceFactory
     {
-        public TService Create<TService>(string dataProviderName = "REST") where TService : PropertyBag, IService, new()
+        public TService Create<TService>(string dataProviderName = "REST") where TService : ProviderBase, IService, new()
         {
             var NewService = new TService();
             NewService.SetDataProvider(dataProviderName);
@@ -14,13 +14,14 @@ namespace Rebilly.Services
             return NewService;
         }
 
-        public PropertyBag Create(string serviceName, string dataProviderName = "REST")
+        public ProviderBase Create(string serviceName, string dataProviderName = "REST")
         {
             if(string.IsNullOrEmpty(serviceName))
             {
                 throw new ArgumentNullException(serviceName);
             }
 
+            // Could use a reflection to create an instance also
             switch(serviceName)
             {
                 case "Websites": 

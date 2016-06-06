@@ -3,7 +3,7 @@
 
 namespace Rebilly.Services
 {
-    public class Service<TEntity> : PropertyBag, IService
+    public class Service<TEntity> : ProviderBase, IService
     {
         public IDataProvider<TEntity> DataProvider { get; private set; }
 
@@ -39,6 +39,7 @@ namespace Rebilly.Services
         protected virtual void BeforeAction()
         {
             CopyPropertiesTo(DataProvider);
+            DataProvider.Middleware = Middleware;
         }
 
 

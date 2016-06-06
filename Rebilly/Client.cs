@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Dynamic;
 using Rebilly.Services;
+using Rebilly.Middleware;
+using System.Collections.Generic;
 
 namespace Rebilly
 {
@@ -12,6 +14,7 @@ namespace Rebilly
         public string BaseUrl { get; private set; }
         public string ApiKey { get; private set; }
 
+        public Stack<MiddlewareBase> Middleware { get; set; }
  
         public Client(string apiKey = null, string baseUrl = null)
         {
@@ -32,7 +35,10 @@ namespace Rebilly
             {
                 BaseUrl = baseUrl;
             }
+
+            Initialize();
         }
+
 
         public GatewayAccountsService GatewayAccounts()
         {
@@ -40,12 +46,12 @@ namespace Rebilly
         }
 
 
-        public TService GetService<TService>() where TService : PropertyBag, IService, new()
+        public TService GetService<TService>() where TService : ProviderBase, IService, new()
         {
             var Factory = new ServiceFactory();
             var NewService = Factory.Create<TService>();
 
-            SetPropertyBag(NewService);
+            SetProviderBase(NewService);
 
             return NewService;
         }
@@ -56,7 +62,7 @@ namespace Rebilly
             var Factory = new ServiceFactory();
             var NewService = Factory.Create(serviceName);
 
-            SetPropertyBag(NewService);
+            SetProviderBase(NewService);
 
             return NewService;
         }
@@ -69,10 +75,22 @@ namespace Rebilly
         }
 
 
-        private void SetPropertyBag(PropertyBag targetBag)
+        private void SetProviderBase(ProviderBase providerBase)
         {
-            targetBag["ApiKey"] = ApiKey;
-            targetBag["BaseUrl"] = BaseUrl;
+            providerBase["ApiKey"] = ApiKey;
+            providerBase["BaseUrl"] = BaseUrl;
+
+            providerBase.Middleware = Middleware;
         }
+
+
+        private void Initialize()
+        {
+            Middleware = new Stack<MiddlewareBase>();
+
+            Middleware.Push(new Authenticator() { ApiKey = ApiKey });
+            Middleware.Push(new ResponseLogger());
+        }
+
     }
 }
