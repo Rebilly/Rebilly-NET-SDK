@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rebilly", "Rebilly\Rebilly.csproj", "{2A93C205-EDE4-413D-B30C-D28C44823E9B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{98B5FCF8-7CCA-467D-9756-9BA1D4E4877B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{2A93C205-EDE4-413D-B30C-D28C44823E9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A93C205-EDE4-413D-B30C-D28C44823E9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A93C205-EDE4-413D-B30C-D28C44823E9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98B5FCF8-7CCA-467D-9756-9BA1D4E4877B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98B5FCF8-7CCA-467D-9756-9BA1D4E4877B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98B5FCF8-7CCA-467D-9756-9BA1D4E4877B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98B5FCF8-7CCA-467D-9756-9BA1D4E4877B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
