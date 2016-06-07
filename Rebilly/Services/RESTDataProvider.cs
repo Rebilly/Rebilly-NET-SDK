@@ -47,7 +47,7 @@ namespace Rebilly.Services
 
                 var Response = Client.SendAsync(Request).Result;
 
-                ApplyMiddlewareToResponse(Response);
+                ApplyMiddlewareToResponse(Request, Response);
 
                 return Response.Content.ReadAsStringAsync().Result;
             }
@@ -63,11 +63,11 @@ namespace Rebilly.Services
         }
 
 
-        private void ApplyMiddlewareToResponse(HttpResponseMessage response)
+        private void ApplyMiddlewareToResponse(HttpRequestMessage request, HttpResponseMessage response)
         {
             foreach (var middleware in Middleware)
             {
-                middleware.OnResponse(response);
+                middleware.OnResponse(request, response);
             }
         }
 

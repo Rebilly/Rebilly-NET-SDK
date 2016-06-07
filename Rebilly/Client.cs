@@ -88,8 +88,7 @@ namespace Rebilly
         {
             Middleware = new Stack<MiddlewareBase>();
 
-            Middleware.Push(new Authenticator() { ApiKey = ApiKey });
-            Middleware.Push(new ResponseLogger());
+            Middleware.Push(new AuthenticatorMiddleware() { ApiKey = ApiKey });
         }
 
     }

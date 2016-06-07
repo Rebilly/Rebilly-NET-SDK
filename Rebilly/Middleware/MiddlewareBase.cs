@@ -5,7 +5,7 @@ namespace Rebilly.Middleware
     public class MiddlewareBase
     {
         public virtual void OnRequest(HttpRequestMessage request) { }
-        public virtual void OnResponse(HttpResponseMessage response) { }
+        public virtual void OnResponse(HttpRequestMessage request, HttpResponseMessage response) { }
 
     }
 }
