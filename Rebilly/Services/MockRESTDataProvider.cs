@@ -8,5 +8,10 @@ namespace Rebilly.Services
         {
             return null;
         }
+
+        public override TEntity Create(string path, TEntity entity)
+        {
+            return entity;
+        }
     }
 }

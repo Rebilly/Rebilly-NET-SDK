@@ -16,9 +16,21 @@ namespace Rebilly.Services
         public override IList<TEntity> Get(string path, Dictionary<string, string> arguments = null)
         {
             var RelativeUrl = CreateUrl(path, arguments);
-            var Text = GetJsonText(RelativeUrl);
+            var Text = GetJsonText(RelativeUrl, HttpMethod.Get,"");
 
             return JsonConvert.DeserializeObject<List<TEntity>>(Text);        
+        }
+
+
+        public override TEntity Create(string path, TEntity entity)
+        {
+            var RelativeUrl = CreateUrl(path, null);
+
+            var SerializeText = JsonConvert.SerializeObject(entity);
+
+            var ResponseText = GetJsonText(RelativeUrl, HttpMethod.Get,SerializeText);
+
+            return entity;
         }
 
     
@@ -33,7 +45,7 @@ namespace Rebilly.Services
         }
 
 
-        protected string GetJsonText(string relativeUrl)
+        protected string GetJsonText(string relativeUrl, HttpMethod method, string content)
         {
             using (var Client = CreateClient())
             {
@@ -44,6 +56,12 @@ namespace Rebilly.Services
 
                 ApplyMiddlewareToRequest(Request);
                 Request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                Request.Method = method;
+
+                if (!string.IsNullOrEmpty(content))
+                {
+                    Request.Content = new StringContent(content);
+                }
 
                 var Response = Client.SendAsync(Request).Result;
 
@@ -52,6 +70,8 @@ namespace Rebilly.Services
                 return Response.Content.ReadAsStringAsync().Result;
             }
         }
+
+
 
 
         private void ApplyMiddlewareToRequest(HttpRequestMessage request)

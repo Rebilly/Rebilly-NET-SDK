@@ -28,6 +28,14 @@ namespace Rebilly.Services
         }
 
 
+        public TEntity Create(TEntity entity)
+        {
+            BeforeAction();
+
+            return DataProvider.Create(GetMappedEntityName(), entity);
+        }
+
+
         public IList<TEntity> Search(RebillySearchArguments arguments = null)
         {
             BeforeAction();

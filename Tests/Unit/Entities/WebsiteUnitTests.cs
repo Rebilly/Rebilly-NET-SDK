@@ -6,7 +6,7 @@ namespace Tests.Unit.Entities
     [TestFixture]
     public class WebsiteUnitTests
     {
-        [Test]        
+                   
         public void TestConstructIsInstanceOfEntity()
         {
             var Website = new Website();

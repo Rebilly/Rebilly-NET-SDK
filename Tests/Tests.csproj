@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Functional\GatewayAccountsServiceFunctionalTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestConfig.cs" />
     <Compile Include="Unit\Entities\WebsiteUnitTests.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -56,7 +58,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Functional\" />
     <Folder Include="Integration\" />
     <Folder Include="Unit\Exceptions\" />
   </ItemGroup>
