@@ -54,6 +54,7 @@
     <Compile Include="Services\DataProviderFactory.cs" />
     <Compile Include="Services\IDataProvider.cs" />
     <Compile Include="Services\IProviderBase.cs" />
+    <Compile Include="Services\JsonSerializeCreatePropertiesResolver.cs" />
     <Compile Include="Services\MockRESTDataProvider.cs" />
     <Compile Include="Services\OrganizationsService.cs" />
     <Compile Include="Services\ProviderBase.cs" />

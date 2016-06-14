@@ -8,7 +8,7 @@ namespace Rebilly
 {
     public class Client : DynamicObject
     {
-        public static string SandboxHost = "https://api.rebilly.com/v2.1/";
+        public static string SandboxHost = "https://api-sandbox.rebilly.com/v2.1/";
         public static string ProductionHost = "https://api.rebilly.com/v2.1/";
 
         public string BaseUrl { get; private set; }
@@ -43,6 +43,12 @@ namespace Rebilly
         public GatewayAccountsService GatewayAccounts()
         {
             return GetService<GatewayAccountsService>();
+        }
+
+
+        public OrganizationsService Organizations()
+        {
+            return GetService<OrganizationsService>();
         }
 
 

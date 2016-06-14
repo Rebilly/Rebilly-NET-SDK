@@ -26,9 +26,14 @@ namespace Rebilly.Services
         {
             var RelativeUrl = CreateUrl(path, null);
 
-            var SerializeText = JsonConvert.SerializeObject(entity);
+            var SerializerSettings = new JsonSerializerSettings
+            {
+                ContractResolver = new JsonSerializeCreatePropertiesResolver()
+            };
 
-            var ResponseText = GetJsonText(RelativeUrl, HttpMethod.Get,SerializeText);
+            var SerializeText = JsonConvert.SerializeObject(entity, SerializerSettings);
+
+            var ResponseText = GetJsonText(RelativeUrl, HttpMethod.Post,SerializeText);
 
             return entity;
         }
