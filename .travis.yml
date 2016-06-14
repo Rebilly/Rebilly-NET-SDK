@@ -10,4 +10,4 @@ install:
 script:
   - xbuild Rebilly.sln
 after_script:
-  - nunit-console Tests/bin/Release/Tests.dll
+  - nunit-console Tests/bin/Debug/Tests.dll

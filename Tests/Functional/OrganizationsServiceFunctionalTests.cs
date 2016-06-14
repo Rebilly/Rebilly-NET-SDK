@@ -12,7 +12,13 @@ namespace Tests.Functional
         [Test]
         public void TestCreateUpdateRetrieveListDelete()
         {
+            // Create
+            var NewOrganization = CreateOrganizaion();
 
+            // Validate create
+            Assert.IsNotNull(NewOrganization.Id);
+
+            // Delete
         }
 
         public Organization CreateOrganizaion()
