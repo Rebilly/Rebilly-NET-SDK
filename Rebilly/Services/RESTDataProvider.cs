@@ -5,20 +5,22 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 
-using Rebilly.Exceptions;
+using Rebilly.Core;
 
 using Newtonsoft.Json;
 
+using Rebilly.Entities;
+
 namespace Rebilly.Services
 {
-    public class RESTDataProvider<TEntity> : DataProvider<TEntity>
+    public class RESTDataProvider<TEntity> : DataProvider<TEntity> where TEntity : IEntity
     {
         public override IList<TEntity> Get(string path, Dictionary<string, string> arguments = null)
         {
             var RelativeUrl = CreateUrl(path, arguments);
-            var Text = GetJsonText(RelativeUrl, HttpMethod.Get,"");
+            var ResponseText = GetJsonText(RelativeUrl, HttpMethod.Get, "");
 
-            return JsonConvert.DeserializeObject<List<TEntity>>(Text);        
+            return JsonConvert.DeserializeObject<List<TEntity>>(ResponseText);        
         }
 
 
@@ -35,7 +37,22 @@ namespace Rebilly.Services
 
             var ResponseText = GetJsonText(RelativeUrl, HttpMethod.Post,SerializeText);
 
-            return entity;
+            return JsonConvert.DeserializeObject<TEntity>(ResponseText);
+        }
+
+
+        public override TEntity Update(string path, TEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public override void Delete(string path, TEntity entity)
+        {
+            var RelativeUrl = CreateUrl(path + "/" + entity.Id + "/", null);
+            
+            // This will throw an exception
+            GetJsonText(RelativeUrl, HttpMethod.Delete, "");
         }
 
     
@@ -72,11 +89,11 @@ namespace Rebilly.Services
 
                 ApplyMiddlewareToResponse(Request, Response);
 
+                ValidateResponse(Response);
+
                 return Response.Content.ReadAsStringAsync().Result;
             }
         }
-
-
 
 
         private void ApplyMiddlewareToRequest(HttpRequestMessage request)
@@ -93,6 +110,27 @@ namespace Rebilly.Services
             foreach (var middleware in Middleware)
             {
                 middleware.OnResponse(request, response);
+            }
+        }
+
+
+        protected void ValidateResponse(HttpResponseMessage response)
+        {
+            if(!response.IsSuccessStatusCode)
+            {
+                var Content = response.Content.ReadAsStringAsync().Result;
+                var ResponseMessage = JsonConvert.DeserializeObject<RebillyErrorResponseMessage>(Content);
+                switch(ResponseMessage.Status)
+                {
+                    case 422 :
+                    {
+                        throw new UnprocessableEntityException(ResponseMessage);
+                    }
+                    default :
+                    {
+                        throw new ClientException(ResponseMessage);
+                    }
+                }
             }
         }
 

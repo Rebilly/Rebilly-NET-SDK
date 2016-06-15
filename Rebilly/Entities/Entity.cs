@@ -2,7 +2,7 @@
 
 namespace Rebilly.Entities
 {
-    public class Entity
+    public class Entity : IEntity
     {
         public string Id { get; set; }
         public DateTime UpdatedTime { get; set;  }

@@ -50,6 +50,7 @@
     <Compile Include="TestConfig.cs" />
     <Compile Include="Unit\Entities\GatewayConfigUnitTests.cs" />
     <Compile Include="Unit\Entities\WebsiteUnitTests.cs" />
+    <Compile Include="Unit\Core\RebillyErrorResponseMessageUnitTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -96,6 +96,5 @@ namespace Rebilly
 
             Middleware.Push(new AuthenticatorMiddleware() { ApiKey = ApiKey });
         }
-
     }
 }

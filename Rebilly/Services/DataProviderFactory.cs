@@ -1,9 +1,11 @@
 ﻿using System;
-using Rebilly.Exceptions;
+
+using Rebilly.Core;
+using Rebilly.Entities;
 
 namespace Rebilly.Services
 {
-    public class DataProviderFactory<TEntity>
+    public class DataProviderFactory<TEntity> where TEntity : IEntity
     {
         public IDataProvider<TEntity> Create(string providerName)
         {

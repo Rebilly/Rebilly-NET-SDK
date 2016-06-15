@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 
+using Rebilly.Entities;
 
 namespace Rebilly.Services
 {
-    public class Service<TEntity> : ProviderBase, IService
+    public class Service<TEntity> : ProviderBase, IService where TEntity : IEntity
     {
         public IDataProvider<TEntity> DataProvider { get; private set; }
 
@@ -41,6 +42,23 @@ namespace Rebilly.Services
             BeforeAction();
 
             return DataProvider.Get(GetMappedEntityName());
+        }
+
+
+        public void Delete(TEntity entity)
+        {
+            BeforeAction();
+
+            DataProvider.Delete(GetMappedEntityName(), entity);            
+        }
+
+
+        public void Delete(string id)
+        {
+            var Entity = default(TEntity);
+            Entity.Id = id;
+ 
+            Delete(Entity);
         }
 
 

@@ -12,19 +12,22 @@ namespace Tests.Functional
         [Test]
         public void TestCreateUpdateRetrieveListDelete()
         {
-            
+
+            var OrganizationsTests = new OrganizationsServiceFunctionalTests();
+            var NewOrganization = OrganizationsTests.CreateOrganizaion();
+
             // TODO: Create new GatewayAccount
             var TestGatewayAccount = new GatewayAccount()
             {
                 GatewayName = "A1Gateway",
-                GatewayConfig = new GatewayConfig() { MemberId = "123", Password = "123123" },
+                GatewayConfig = new GatewayConfig() { MemberId = "123", Password = "123123", AccountId = "12312" },
                 Method = "payment_card",
                 PaymentCardSchemes = new List<string>() { "Visa", "MasterCard"},
-                OrganizationId = "TestOrganziation",
+                OrganizationId = NewOrganization.Id,
                 ThreeDSecure = false,
                 DynamicDescriptor = false,
                 MerchantCategoryCode =  5966,
-                AcquirerName =  "Test Acq",
+                AcquirerName = "CIM",
                 Descriptor = "MyDescriptor",
                 City = "MyCity",
                 Websites = new List<string>(){ "WebSite1", "WebSite2"},
@@ -34,10 +37,15 @@ namespace Tests.Functional
             };
 
             var RebillyClient = CreateClient();
-            var NewGatewayAccount = RebillyClient.GatewayAccounts().Create(TestGatewayAccount);
+            // TODO
+            //var NewGatewayAccount = RebillyClient.GatewayAccounts().Create(TestGatewayAccount);
 
             // List the new accounts
             var Gateways = RebillyClient.GatewayAccounts();
+
+
+            // Remove the organization
+            OrganizationsTests.DeleteOrganization(NewOrganization);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Rebilly.Exceptions;
+
+using Rebilly.Core;
 
 namespace Rebilly.Services
 {

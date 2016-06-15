@@ -1,5 +1,5 @@
 ﻿
-namespace Rebilly.Utils
+namespace Rebilly.Core
 {
     class Pluralizer
     {

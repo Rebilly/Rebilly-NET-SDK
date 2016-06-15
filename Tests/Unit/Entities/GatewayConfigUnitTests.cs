@@ -1,7 +1,6 @@
 ﻿using NUnit.Framework;
 using Rebilly.Entities;
 
-
 namespace Tests.Unit.Entities
 {
     [TestFixture]
