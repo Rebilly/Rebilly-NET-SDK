@@ -31,6 +31,11 @@ namespace Tests
                     RebillyApiKey = File.ReadAllText(ApiKeyFile).Trim();
                 }
             }
+
+            if(string.IsNullOrEmpty(RebillyApiKey))
+            {
+                throw new Exception("Cannot find ApiKey");
+            }
         }
 
     }
