@@ -5,6 +5,7 @@
 *.suo
 *.user
 *.sln.docstates
+ApiKey.txt
 
 # Build results
 

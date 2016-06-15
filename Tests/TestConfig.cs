@@ -1,4 +1,8 @@
-﻿
+﻿using System;
+using System.IO;
+
+using NUnit.Framework;
+
 namespace Tests
 {
     public class TestConfig
@@ -7,7 +11,26 @@ namespace Tests
 
         public TestConfig()
         {
-            RebillyApiKey = "xsrnNrKOFCEXq9UhwL7woo6kDenUL3vBfsbh4yZ";
+            LoadApiKeyFromEnvironmentOrApiKeyFile();
+        }
+
+
+        public void LoadApiKeyFromEnvironmentOrApiKeyFile()
+        {
+            string EnvironmentRebillyApiKey = Environment.GetEnvironmentVariable("RebillyAPIKey");
+            if(!string.IsNullOrEmpty(EnvironmentRebillyApiKey))
+            {
+                RebillyApiKey = EnvironmentRebillyApiKey;
+            }
+            else
+            {
+                string ApiKeyFile = TestContext.CurrentContext.TestDirectory + Path.DirectorySeparatorChar + "ApiKey.txt";
+
+                if(File.Exists(ApiKeyFile))
+                {
+                    RebillyApiKey = File.ReadAllText(ApiKeyFile).Trim();
+                }
+            }
         }
 
     }
