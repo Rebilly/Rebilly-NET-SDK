@@ -4,6 +4,8 @@ using Rebilly.Services;
 using Rebilly.Middleware;
 using System.Collections.Generic;
 
+using Rebilly.Core;
+
 namespace Rebilly
 {
     public class Client : DynamicObject
@@ -49,6 +51,12 @@ namespace Rebilly
         public OrganizationsService Organizations()
         {
             return GetService<OrganizationsService>();
+        }
+
+
+        public WebsitesService Websites()
+        {
+            return GetService<WebsitesService>();
         }
 
 

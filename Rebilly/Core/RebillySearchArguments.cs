@@ -1,5 +1,5 @@
 ﻿
-namespace Rebilly.Services
+namespace Rebilly.Core
 {
     public class RebillySearchArguments
     {

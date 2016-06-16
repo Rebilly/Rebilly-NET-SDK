@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client.cs" />
+    <Compile Include="Core\JsonSerializeUpdatePropertiesResolver.cs" />
     <Compile Include="Core\NotFoundException.cs" />
     <Compile Include="Core\TooManyRequestsException.cs" />
     <Compile Include="Entities\GatewayConfig.cs" />
@@ -54,16 +55,16 @@
     <Compile Include="Middleware\AuthenticatorMiddleware.cs" />
     <Compile Include="Middleware\ResponseLoggerMiddlware.cs" />
     <Compile Include="Middleware\MiddlewareBase.cs" />
-    <Compile Include="Services\DataProvider.cs" />
-    <Compile Include="Services\DataProviderFactory.cs" />
-    <Compile Include="Services\IDataProvider.cs" />
-    <Compile Include="Services\IProviderBase.cs" />
-    <Compile Include="Services\JsonSerializeCreatePropertiesResolver.cs" />
-    <Compile Include="Services\MockRESTDataProvider.cs" />
+    <Compile Include="Core\DataProvider.cs" />
+    <Compile Include="Core\DataProviderFactory.cs" />
+    <Compile Include="Core\IDataProvider.cs" />
+    <Compile Include="Core\IProviderBase.cs" />
+    <Compile Include="Core\JsonSerializeCreatePropertiesResolver.cs" />
+    <Compile Include="Core\MockRESTDataProvider.cs" />
     <Compile Include="Services\OrganizationsService.cs" />
-    <Compile Include="Services\ProviderBase.cs" />
+    <Compile Include="Core\ProviderBase.cs" />
     <Compile Include="Core\RebillyErrorResponseMessage.cs" />
-    <Compile Include="Services\RESTDataProvider.cs" />
+    <Compile Include="Core\RESTDataProvider.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\GatewayAccount.cs" />
     <Compile Include="Entities\Website.cs" />
@@ -71,7 +72,7 @@
     <Compile Include="Core\RebillyException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\GatewayAccountsService.cs" />
-    <Compile Include="Services\RebillySearchArguments.cs" />
+    <Compile Include="Core\RebillySearchArguments.cs" />
     <Compile Include="Services\Service.cs" />
     <Compile Include="Services\IService.cs" />
     <Compile Include="Services\ServiceFactory.cs" />

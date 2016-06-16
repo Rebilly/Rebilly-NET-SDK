@@ -3,7 +3,7 @@
 using Rebilly.Core;
 using Rebilly.Entities;
 
-namespace Rebilly.Services
+namespace Rebilly.Core
 {
     public class DataProviderFactory<TEntity> where TEntity : IEntity
     {

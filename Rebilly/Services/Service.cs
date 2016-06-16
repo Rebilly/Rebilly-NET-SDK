@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 
+using Rebilly.Core;
 using Rebilly.Entities;
 
 namespace Rebilly.Services

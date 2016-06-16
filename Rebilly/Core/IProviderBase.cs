@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using Rebilly.Middleware;
 
-
-namespace Rebilly.Services
+namespace Rebilly.Core
 {
     public interface IProviderBase
     {

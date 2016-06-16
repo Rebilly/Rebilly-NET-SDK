@@ -2,13 +2,18 @@
 
 using Rebilly.Entities;
 
-namespace Rebilly.Services
+namespace Rebilly.Core
 {
     public class MockRESTDataProvider<TEntity> : DataProvider<TEntity> where TEntity : IEntity
     {
         public override IList<TEntity> Get(string path, Dictionary<string, string> arguments = null)
         {
             return null;
+        }
+
+        public override TEntity Load(string path, string id)
+        {
+            return default(TEntity);
         }
 
 

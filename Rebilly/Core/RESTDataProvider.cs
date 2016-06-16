@@ -11,7 +11,7 @@ using Newtonsoft.Json;
 
 using Rebilly.Entities;
 
-namespace Rebilly.Services
+namespace Rebilly.Core
 {
     public class RESTDataProvider<TEntity> : DataProvider<TEntity> where TEntity : IEntity
     {
@@ -41,9 +41,29 @@ namespace Rebilly.Services
         }
 
 
+        public override TEntity Load(string path, string id)
+        {
+            var RelativeUrl = CreateUrl(path + "/" + id + "/", null);
+            var ResponseText = GetJsonText(RelativeUrl, HttpMethod.Get, "");
+
+            return JsonConvert.DeserializeObject<TEntity>(ResponseText);
+        }
+
+
         public override TEntity Update(string path, TEntity entity)
         {
-            throw new NotImplementedException();
+            var RelativeUrl = CreateUrl(path, null);
+
+            var SerializerSettings = new JsonSerializerSettings
+            {
+                ContractResolver = new JsonSerializeUpdatePropertiesResolver()
+            };
+
+            var SerializeText = JsonConvert.SerializeObject(entity, SerializerSettings);
+
+            var ResponseText = GetJsonText(RelativeUrl, HttpMethod.Put, SerializeText);
+
+            return JsonConvert.DeserializeObject<TEntity>(ResponseText);
         }
 
 

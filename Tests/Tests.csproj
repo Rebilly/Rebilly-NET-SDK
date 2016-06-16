@@ -46,6 +46,7 @@
     <Compile Include="Functional\FunctionalTestBase.cs" />
     <Compile Include="Functional\GatewayAccountsServiceFunctionalTests.cs" />
     <Compile Include="Functional\OrganizationsServiceFunctionalTests.cs" />
+    <Compile Include="Functional\WebsitesServiceFunctionalTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestConfig.cs" />
     <Compile Include="Unit\Entities\GatewayConfigUnitTests.cs" />

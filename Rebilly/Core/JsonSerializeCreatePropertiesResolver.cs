@@ -4,7 +4,7 @@ using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace Rebilly.Services
+namespace Rebilly.Core
 {
     internal class JsonSerializeCreatePropertiesResolver : DefaultContractResolver
     {
