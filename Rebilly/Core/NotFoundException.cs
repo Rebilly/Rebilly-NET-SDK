@@ -1,7 +1,11 @@
 ﻿
 namespace Rebilly.Core
 {
-    class NotFoundException
+    public class NotFoundException : ClientException
     {
+        public NotFoundException(RebillyErrorResponseMessage message) : base(message)
+        {
+
+        }
     }
 }

@@ -33,15 +33,20 @@ namespace Rebilly.Services
         public TEntity Create(TEntity entity)
         {
             BeforeAction();
-
             return DataProvider.Create(GetMappedEntityName(), entity);
+        }
+
+
+        public TEntity Load(string id)
+        {
+            BeforeAction();
+            return DataProvider.Load(GetMappedEntityName(), id);
         }
 
 
         public IList<TEntity> Search(RebillySearchArguments arguments = null)
         {
             BeforeAction();
-
             return DataProvider.Get(GetMappedEntityName());
         }
 
@@ -49,8 +54,14 @@ namespace Rebilly.Services
         public void Delete(TEntity entity)
         {
             BeforeAction();
-
             DataProvider.Delete(GetMappedEntityName(), entity);            
+        }
+
+
+        public TEntity Update(TEntity entity)
+        {
+            BeforeAction();
+            return DataProvider.Update(GetMappedEntityName(), entity);
         }
 
 

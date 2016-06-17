@@ -52,7 +52,7 @@ namespace Rebilly.Core
 
         public override TEntity Update(string path, TEntity entity)
         {
-            var RelativeUrl = CreateUrl(path, null);
+            var RelativeUrl = CreateUrl(path + "/" + entity.Id + "/", null);
 
             var SerializerSettings = new JsonSerializerSettings
             {
@@ -145,6 +145,10 @@ namespace Rebilly.Core
                     case 422 :
                     {
                         throw new UnprocessableEntityException(ResponseMessage);
+                    }
+                    case 404:
+                    {
+                        throw new NotFoundException(ResponseMessage);
                     }
                     default :
                     {

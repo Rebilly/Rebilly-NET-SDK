@@ -13,7 +13,7 @@ namespace Tests.Functional
     public class WebsitesServiceFunctionalTests : FunctionalTestBase
     {
         [Test]
-        public void TestCreateUpdateRetrieveListDelete()
+        public void TestCreateUpdateLoadListDelete()
         {
             // Create
             var NewWebsite = GetNewWebsite();
@@ -26,8 +26,41 @@ namespace Tests.Functional
 
 
             // Update
+            CreatedWebsite.Name = "TestWebsites-" + Guid.NewGuid().ToString();
+            CreatedWebsite.Url = "mywebsite.com";
+            CreatedWebsite.ServicePhone = "+12345678910";
+            CreatedWebsite.ServiceEmail = "support2@gmail.com";
+            CreatedWebsite.CheckoutPageUri = "checkout2";
 
+            var RebillyClient = CreateClient();
+            var UpdatedWebsite = RebillyClient.Websites().Update(CreatedWebsite);
+            Assert.AreEqual(UpdatedWebsite.Name, CreatedWebsite.Name);
+            Assert.AreEqual(UpdatedWebsite.Url, CreatedWebsite.Url);
+            Assert.AreEqual(UpdatedWebsite.ServicePhone, CreatedWebsite.ServicePhone);
+            Assert.AreEqual(UpdatedWebsite.ServiceEmail, CreatedWebsite.ServiceEmail);
+            Assert.AreEqual(UpdatedWebsite.CheckoutPageUri, CreatedWebsite.CheckoutPageUri);
+
+            // Load
+            var LoadWebsite = RebillyClient.Websites().Load(UpdatedWebsite.Id);
+            Assert.AreEqual(LoadWebsite.Name, UpdatedWebsite.Name);
+            Assert.AreEqual(LoadWebsite.Url, UpdatedWebsite.Url);
+            Assert.AreEqual(LoadWebsite.ServicePhone, UpdatedWebsite.ServicePhone);
+            Assert.AreEqual(LoadWebsite.ServiceEmail, UpdatedWebsite.ServiceEmail);
+            Assert.AreEqual(LoadWebsite.CheckoutPageUri, UpdatedWebsite.CheckoutPageUri);
+
+            // Delete
             DeleteWebsite(CreatedWebsite);
+
+            // Test Not found exception
+            try
+            {
+                var DeletedLoadWebsite = RebillyClient.Websites().Load(UpdatedWebsite.Id);
+                Assert.True(false);
+            }
+            catch(NotFoundException ex)
+            {
+                Assert.IsInstanceOf<NotFoundException>(ex);
+            }
         }
 
         public Website CreateWebsite(Website newWebSite)
@@ -43,7 +76,7 @@ namespace Tests.Functional
                 Name = "TestWebsites-" + Guid.NewGuid().ToString(),
                 Url = "mywebsite.com",
                 ServicePhone = "+123456789",
-                ServiceEmail = "support@mywebsite.com",
+                ServiceEmail = "support@gmail.com",
                 CheckoutPageUri = "checkout",
                 WebHookUrl = "http://www.test.com/rebilly_webhook.php",
                 WebHookUsername = "user",
