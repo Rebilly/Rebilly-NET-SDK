@@ -44,7 +44,7 @@ namespace Rebilly.Services
         }
 
 
-        public IList<TEntity> Search(RebillySearchArguments arguments = null)
+        public IList<TEntity> Search(SearchArguments arguments = null)
         {
             BeforeAction();
             return DataProvider.Get(GetMappedEntityName());

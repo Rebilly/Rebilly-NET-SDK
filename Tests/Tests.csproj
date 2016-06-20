@@ -47,11 +47,15 @@
     <Compile Include="Functional\GatewayAccountsServiceFunctionalTests.cs" />
     <Compile Include="Functional\OrganizationsServiceFunctionalTests.cs" />
     <Compile Include="Functional\WebsitesServiceFunctionalTests.cs" />
+    <Compile Include="Integration\SearchArgumentsConverterIntegrationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestConfig.cs" />
+    <Compile Include="Unit\Core\SearchArgumentsUnitTests.cs" />
+    <Compile Include="Unit\Core\SearchFilterUnitTests.cs" />
     <Compile Include="Unit\Entities\GatewayConfigUnitTests.cs" />
     <Compile Include="Unit\Entities\WebsiteUnitTests.cs" />
     <Compile Include="Unit\Core\RebillyErrorResponseMessageUnitTests.cs" />
+    <Compile Include="Unit\Core\SearchArgumentsConverterUnitTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -63,7 +67,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Integration\" />
     <Folder Include="Unit\Exceptions\" />
   </ItemGroup>
   <ItemGroup>

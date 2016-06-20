@@ -9,7 +9,7 @@ namespace Tests.Unit.Services
     public class RebillyErrorResponseMessageUnitTests
     {
         [Test]
-        public void TestConstructIsInstanceOfEntity()
+        public void TestConstructIsNotNull()
         {
             var Message = new RebillyErrorResponseMessage();
             Assert.IsNotNull(Message);
@@ -86,7 +86,5 @@ namespace Tests.Unit.Services
 
             Assert.AreEqual("Client request failed with error status 411.  All Systems down.  Down 1.  Down 2.", Message.FullMessage);
         }
-
-
     }
 }

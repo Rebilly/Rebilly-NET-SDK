@@ -47,6 +47,8 @@
     <Compile Include="Client.cs" />
     <Compile Include="Core\JsonSerializeUpdatePropertiesResolver.cs" />
     <Compile Include="Core\NotFoundException.cs" />
+    <Compile Include="Core\SearchArgumentsConverter.cs" />
+    <Compile Include="Core\SearchFilter.cs" />
     <Compile Include="Core\TooManyRequestsException.cs" />
     <Compile Include="Entities\GatewayConfig.cs" />
     <Compile Include="Entities\IEntity.cs" />
@@ -72,7 +74,7 @@
     <Compile Include="Core\RebillyException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\GatewayAccountsService.cs" />
-    <Compile Include="Core\RebillySearchArguments.cs" />
+    <Compile Include="Core\SearchArguments.cs" />
     <Compile Include="Services\Service.cs" />
     <Compile Include="Services\IService.cs" />
     <Compile Include="Services\ServiceFactory.cs" />
