@@ -17,8 +17,8 @@ namespace Rebilly.Core
         public int Limit { get; set; }
         public int Offset { get; set; }
 
-        public List<string> Sort { get; private set;  }
-        public List<string> Fields { get; private set;  }
+        public List<string> Sort { get;  set;  }
+        public List<string> Fields { get; set;  }
         public SearchFilter Filter { get;  set;  }
         
     }

@@ -6,7 +6,7 @@ namespace Rebilly.Core
 {
     public class ClientException : RebillyException
     {
-        public RebillyErrorResponseMessage StatusMessage { get; private set; }
+        public ErrorResponseMessage StatusMessage { get; private set; }
 
         public int Status 
         {
@@ -28,11 +28,11 @@ namespace Rebilly.Core
 
         public ClientException()
         {
-            StatusMessage = new RebillyErrorResponseMessage();
+            StatusMessage = new ErrorResponseMessage();
         }
 
 
-        public ClientException(RebillyErrorResponseMessage message) : base(message.FullMessage)
+        public ClientException(ErrorResponseMessage message) : base(message.FullMessage)
         {
             StatusMessage = message;
         }

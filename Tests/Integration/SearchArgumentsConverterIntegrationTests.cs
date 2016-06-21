@@ -20,7 +20,7 @@ namespace Tests.Integration
 
 
         [Test]
-        public void TestConverterWithAgumentsOffsetIsEqualTo()
+        public void TestConverterToDictionaryWithAgumentsOffsetIsEqualTo()
         {
             var Converter = new SearchArgumentsConverter();
 
@@ -31,7 +31,7 @@ namespace Tests.Integration
 
 
         [Test]
-        public void TestConverterWithAgumentsOffsetAndLimitIsEqualTo()
+        public void TestConverterToDictionaryWithAgumentsOffsetAndLimitIsEqualTo()
         {
             var Converter = new SearchArgumentsConverter();
 
@@ -43,7 +43,7 @@ namespace Tests.Integration
 
 
         [Test]
-        public void TestConverterWithFieldsIsEqualTo()
+        public void TestConverterToDictionaryWithFieldsIsEqualTo()
         {
             var Converter = new SearchArgumentsConverter();
 
@@ -54,5 +54,51 @@ namespace Tests.Integration
 
             Assert.AreEqual("Field1:test1,test2", Converter.ToDictionary(Arguments)["Filter"]);
         }
+
+
+        [Test]
+        public void TestConverterToQueryStringWithFieldsIsEqualTo()
+        {
+            var Converter = new SearchArgumentsConverter();
+
+            var Arguments = new SearchArguments();
+            Arguments.Filter.Field = "Field1";
+            Arguments.Filter.Values = new List<string>() { "test1", "test2" };
+
+
+            Assert.AreEqual("filter=Field1:test1,test2", Converter.ToQueryString(Arguments));
+        }
+
+
+        [Test]
+        public void TestConverterToQueryStringWithFieldsAndLimitOffsetIsEqualTo()
+        {
+            var Converter = new SearchArgumentsConverter();
+
+            var Arguments = new SearchArguments();
+            Arguments.Offset = 0;
+            Arguments.Limit = 10;
+            Arguments.Filter.Field = "Field1";
+            Arguments.Filter.Values = new List<string>() { "test1", "test2" };
+
+            Assert.AreEqual("offset=0&limit=10&filter=Field1:test1,test2", Converter.ToQueryString(Arguments));
+        }
+
+
+        [Test]
+        public void TestConverterToQueryStringWithFieldsAndLimitOffsetSortIsEqualTo()
+        {
+            var Converter = new SearchArgumentsConverter();
+
+            var Arguments = new SearchArguments();
+            Arguments.Offset = 2;
+            Arguments.Limit = 123;
+            Arguments.Filter.Field = "Field1";
+            Arguments.Filter.Values = new List<string>() { "test1", "test2" };
+            Arguments.Sort = new List<string>() { "test1", "-test2" };
+
+            Assert.AreEqual("offset=2&limit=123&filter=Field1:test1,test2&sort=test1,-test2", Converter.ToQueryString(Arguments));
+        }
+
     }
 }

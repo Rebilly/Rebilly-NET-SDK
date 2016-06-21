@@ -5,7 +5,7 @@ using Rebilly.Entities;
 
 namespace Rebilly.Services
 {
-    public class Service<TEntity> : ProviderBase, IService where TEntity : IEntity
+    public class Service<TEntity> : ProviderBase, IService where TEntity : IEntity, new()
     {
         public IDataProvider<TEntity> DataProvider { get; private set; }
 
@@ -44,10 +44,24 @@ namespace Rebilly.Services
         }
 
 
+        public Pager<TEntity> Pagination(SearchArguments arguments = null)
+        {
+            return new Pager<TEntity>();
+        }
+
+
         public IList<TEntity> Search(SearchArguments arguments = null)
         {
             BeforeAction();
-            return DataProvider.Get(GetMappedEntityName());
+
+            Dictionary<string, string> Arguments = null;
+            if(arguments != null)
+            {
+                var Converter = new SearchArgumentsConverter();
+                Arguments = Converter.ToDictionary(arguments);
+            }
+
+            return DataProvider.Get(GetMappedEntityName(), Arguments);
         }
 
 
@@ -67,7 +81,7 @@ namespace Rebilly.Services
 
         public void Delete(string id)
         {
-            var Entity = default(TEntity);
+            var Entity = new TEntity();
             Entity.Id = id;
  
             Delete(Entity);

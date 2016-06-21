@@ -2,11 +2,16 @@
 
 namespace Rebilly.Core
 {
-    public class RebillyErrorResponseMessage
+    public class ErrorResponseMessage
     {
         public int Status { get; set; }
         public string Error { get; set; }
         public List<string> Details { get; set;  }
+
+        public ErrorResponseMessage()
+        {
+            Details = new List<string>();
+        }
 
         public string FullMessage
         {

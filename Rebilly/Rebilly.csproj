@@ -47,6 +47,7 @@
     <Compile Include="Client.cs" />
     <Compile Include="Core\JsonSerializeUpdatePropertiesResolver.cs" />
     <Compile Include="Core\NotFoundException.cs" />
+    <Compile Include="Core\Pager.cs" />
     <Compile Include="Core\SearchArgumentsConverter.cs" />
     <Compile Include="Core\SearchFilter.cs" />
     <Compile Include="Core\TooManyRequestsException.cs" />
@@ -65,7 +66,7 @@
     <Compile Include="Core\MockRESTDataProvider.cs" />
     <Compile Include="Services\OrganizationsService.cs" />
     <Compile Include="Core\ProviderBase.cs" />
-    <Compile Include="Core\RebillyErrorResponseMessage.cs" />
+    <Compile Include="Core\ErrorResponseMessage.cs" />
     <Compile Include="Core\RESTDataProvider.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\GatewayAccount.cs" />

@@ -11,7 +11,7 @@ namespace Tests.Unit.Services
         [Test]
         public void TestConstructIsNotNull()
         {
-            var Message = new RebillyErrorResponseMessage();
+            var Message = new ErrorResponseMessage();
             Assert.IsNotNull(Message);
         }
 
@@ -19,7 +19,7 @@ namespace Tests.Unit.Services
         [Test]
         public void TestStatusDefaultIsEqualTo()
         {
-            var Message = new RebillyErrorResponseMessage();
+            var Message = new ErrorResponseMessage();
             Assert.AreEqual(0,Message.Status);
         }
 
@@ -27,7 +27,7 @@ namespace Tests.Unit.Services
         [Test]
         public void TestStatusIsEqualTo()
         {
-            var Message = new RebillyErrorResponseMessage();
+            var Message = new ErrorResponseMessage();
             Message.Status = 124;
             Assert.AreEqual(124, Message.Status);
         }
@@ -36,7 +36,7 @@ namespace Tests.Unit.Services
         [Test]
         public void TestErrorDefaultIsEqualTo()
         {
-            var Message = new RebillyErrorResponseMessage();
+            var Message = new ErrorResponseMessage();
             Assert.IsNull(Message.Error);
         }
 
@@ -44,7 +44,7 @@ namespace Tests.Unit.Services
         [Test]
         public void TestErrorIsEqualTo()
         {
-            var Message = new RebillyErrorResponseMessage();
+            var Message = new ErrorResponseMessage();
             Message.Error = "error";
             Assert.AreEqual("error", Message.Error);
         }
@@ -53,17 +53,15 @@ namespace Tests.Unit.Services
         [Test]
         public void TestDetailsDefaultIsEqualTo()
         {
-            var Message = new RebillyErrorResponseMessage();
-            Assert.IsNull(Message.Details);        
+            var Message = new ErrorResponseMessage();
+            Assert.IsEmpty(Message.Details);        
         }
 
 
         [Test]
         public void TestDetailsIsEqualTo()
         {
-            var Message = new RebillyErrorResponseMessage();
-            Message.Details = new List<string>();
-
+            var Message = new ErrorResponseMessage();
             Assert.AreEqual(0,Message.Details.Count);
         }
 
@@ -71,7 +69,7 @@ namespace Tests.Unit.Services
         [Test]
         public void TestFullMessageDefaultIsEqualTo()
         {
-            var Message = new RebillyErrorResponseMessage();
+            var Message = new ErrorResponseMessage();
 
             Assert.AreEqual("Client request failed with error status 0.", Message.FullMessage);
         }
@@ -79,7 +77,7 @@ namespace Tests.Unit.Services
         [Test]
         public void TestFullMessageIsEqualTo()
         {
-            var Message = new RebillyErrorResponseMessage();
+            var Message = new ErrorResponseMessage();
             Message.Status = 411;
             Message.Error = "All Systems down.";
             Message.Details = new List<string>() { "Down 1.", "Down 2." };

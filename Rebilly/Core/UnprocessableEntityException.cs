@@ -4,7 +4,7 @@ namespace Rebilly.Core
 {
     public class UnprocessableEntityException :  ClientException
     {
-        public UnprocessableEntityException(RebillyErrorResponseMessage message) : base(message)
+        public UnprocessableEntityException(ErrorResponseMessage message) : base(message)
         {
 
         }

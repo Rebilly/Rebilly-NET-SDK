@@ -48,16 +48,30 @@ namespace Tests.Functional
             Assert.AreEqual(LoadWebsite.ServiceEmail, UpdatedWebsite.ServiceEmail);
             Assert.AreEqual(LoadWebsite.CheckoutPageUri, UpdatedWebsite.CheckoutPageUri);
 
+            // Add two new sites
+            var NewSite1 = CreateWebsite(GetNewWebsite());
+            var NewSite2 = CreateWebsite(GetNewWebsite());
 
+            // Search
+            var Items = RebillyClient.Websites().Search();
+            Assert.GreaterOrEqual(Items.Count, 3);
 
 
             // Delete
             DeleteWebsite(CreatedWebsite);
+            DeleteWebsite(NewSite1);
+            DeleteWebsite(NewSite2);
+
+            var ItemsToDelete = RebillyClient.Websites().Search();
+            foreach(var item in ItemsToDelete )
+            {
+                RebillyClient.Websites().Delete(item.Id);
+            }
 
             // Test Not found exception
             try
             {
-                var DeletedLoadWebsite = RebillyClient.Websites().Load(UpdatedWebsite.Id);
+                RebillyClient.Websites().Delete(UpdatedWebsite.Id);
                 Assert.True(false);
             }
             catch(NotFoundException ex)

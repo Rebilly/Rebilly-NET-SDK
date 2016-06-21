@@ -31,6 +31,16 @@ namespace Rebilly.Core
                 ReturnArgs.Add("Filter", Filter);
             }
 
+            if (searchArguments.Sort.Count > 0)
+            {
+                ReturnArgs.Add("Sort", string.Join(",", searchArguments.Sort));
+            }
+
+            if (searchArguments.Fields.Count > 0)
+            {
+                ReturnArgs.Add("Fields", string.Join(",", searchArguments.Fields));
+            }
+
             return ReturnArgs;
         }
 
@@ -39,7 +49,7 @@ namespace Rebilly.Core
         {
             var Lookup = ToDictionary(searchArguments);
 
-            return string.Join(",", Lookup.Select((keyPair) => { return keyPair.Key + "=" + keyPair.Value; }).ToList());
+            return string.Join("&", Lookup.Select((keyPair) => { return keyPair.Key.ToLower() + "=" + keyPair.Value; }).ToList());
         }
     }
 }

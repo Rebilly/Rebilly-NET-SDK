@@ -139,7 +139,7 @@ namespace Rebilly.Core
             if(!response.IsSuccessStatusCode)
             {
                 var Content = response.Content.ReadAsStringAsync().Result;
-                var ResponseMessage = JsonConvert.DeserializeObject<RebillyErrorResponseMessage>(Content);
+                var ResponseMessage = JsonConvert.DeserializeObject<ErrorResponseMessage>(Content);
                 switch(ResponseMessage.Status)
                 {
                     case 422 :
@@ -149,6 +149,10 @@ namespace Rebilly.Core
                     case 404:
                     {
                         throw new NotFoundException(ResponseMessage);
+                    }
+                    case 429:
+                    {
+                        throw new TooManyRequestsException(ResponseMessage);
                     }
                     default :
                     {

@@ -1,8 +1,10 @@
 ﻿
 namespace Rebilly.Core
 {
-    // TODO:
-    class TooManyRequestsException
+    public class TooManyRequestsException : ClientException
     {
+        public TooManyRequestsException(ErrorResponseMessage message) : base(message)
+        {
+        }
     }
 }

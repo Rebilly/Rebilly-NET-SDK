@@ -59,6 +59,14 @@ namespace Tests.Unit.Core
             Assert.AreEqual("CreateTime", Arguments.Sort[0]);
         }
 
+        [Test]
+        public void TestSortSetIsEqualTo()
+        {
+            var Arguments = new SearchArguments();
+            Arguments.Sort = new List<string>() { "CreateTime", "UpdatedTime" };
+            Assert.AreEqual("UpdatedTime", Arguments.Sort[1]);
+        }
+
 
         [Test]
         public void TestSortDefault()
@@ -99,6 +107,14 @@ namespace Tests.Unit.Core
             var Arguments = new SearchArguments();
             Arguments.Fields.Add("Field");
             Assert.AreEqual("Field", Arguments.Fields[0]);
+        }
+
+        [Test]
+        public void TestFieldsSetIsEqualTo()
+        {
+            var Arguments = new SearchArguments();
+            Arguments.Fields = new List<string>() { "CreateTime", "UpdatedTime" };
+            Assert.AreEqual("UpdatedTime", Arguments.Fields[1]);
         }
     }
 }
