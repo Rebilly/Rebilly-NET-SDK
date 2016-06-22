@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 
-using Rebilly.Core;
 using Rebilly.Entities;
 
-namespace Rebilly.Services
+namespace Rebilly.Core
 {
-    public class Service<TEntity> : ProviderBase, IService where TEntity : IEntity, new()
+    public class Service<TEntity> : ProviderBase, IService where TEntity : class, IEntity, new()
     {
         public IDataProvider<TEntity> DataProvider { get; private set; }
 
@@ -44,9 +43,9 @@ namespace Rebilly.Services
         }
 
 
-        public Pager<TEntity> Pagination(SearchArguments arguments = null)
+        public Paginator<TEntity> Pagination(SearchArguments arguments = null)
         {
-            return new Pager<TEntity>();
+            return new Paginator<TEntity>(this, arguments);
         }
 
 

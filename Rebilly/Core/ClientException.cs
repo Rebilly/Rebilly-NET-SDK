@@ -26,6 +26,15 @@ namespace Rebilly.Core
         }
 
 
+        public string FullMessage
+        {
+            get
+            {
+                return StatusMessage.FullMessage;
+            }
+        }
+
+
         public ClientException()
         {
             StatusMessage = new ErrorResponseMessage();

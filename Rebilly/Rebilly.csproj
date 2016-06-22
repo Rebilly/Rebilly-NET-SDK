@@ -47,7 +47,8 @@
     <Compile Include="Client.cs" />
     <Compile Include="Core\JsonSerializeUpdatePropertiesResolver.cs" />
     <Compile Include="Core\NotFoundException.cs" />
-    <Compile Include="Core\Pager.cs" />
+    <Compile Include="Core\Paginator.cs" />
+    <Compile Include="Core\PaginatorEnumerator.cs" />
     <Compile Include="Core\SearchArgumentsConverter.cs" />
     <Compile Include="Core\SearchFilter.cs" />
     <Compile Include="Core\TooManyRequestsException.cs" />
@@ -76,8 +77,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\GatewayAccountsService.cs" />
     <Compile Include="Core\SearchArguments.cs" />
-    <Compile Include="Services\Service.cs" />
-    <Compile Include="Services\IService.cs" />
+    <Compile Include="Core\Service.cs" />
+    <Compile Include="Core\IService.cs" />
     <Compile Include="Services\ServiceFactory.cs" />
     <Compile Include="Services\WebsitesService.cs" />
     <Compile Include="Core\ApiKeyProvider.cs" />
