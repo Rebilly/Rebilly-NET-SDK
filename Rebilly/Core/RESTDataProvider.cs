@@ -83,7 +83,7 @@ namespace Rebilly.Core
                 return url;
             }
 
-            return url + string.Join("&", arguments.Select(kv => string.Format("{0}={1}", kv.Key, kv.Value)));
+            return url + "?" + string.Join("&", arguments.Select(kv => string.Format("{0}={1}", kv.Key.ToLower(), kv.Value)));
         }
 
 

@@ -52,6 +52,7 @@
     <Compile Include="TestConfig.cs" />
     <Compile Include="Unit\Core\ClientExceptionUnitTests.cs" />
     <Compile Include="Unit\Core\ErrorResponseMessageUnitTests.cs" />
+    <Compile Include="Unit\Core\RateLimitStatusUnitTest.cs" />
     <Compile Include="Unit\Core\RebillyExceptionUnitTests.cs" />
     <Compile Include="Unit\Core\SearchArgumentsUnitTests.cs" />
     <Compile Include="Unit\Core\SearchFilterUnitTests.cs" />

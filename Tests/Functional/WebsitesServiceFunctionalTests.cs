@@ -80,6 +80,45 @@ namespace Tests.Functional
             }
         }
 
+
+        /// <summary>
+        /// This is an expensive test to run and probably should be put into a new separate category
+        /// </summary>
+        [Test]
+        public void TestPagination()
+        {
+/*
+            int NumberOfWebSites = 25;
+            int PaginationLimit = 6;
+
+            var NewWebsites = new List<Website>();
+
+            for(int i=0; i < NumberOfWebSites; i++)
+            {
+                var NewWebsite =  CreateWebsite(GetNewWebsite());
+                NewWebsites.Add(NewWebsite);
+            }
+
+            var RebillyClient = CreateClient();
+            var PaginationItems = RebillyClient.Websites().Pagination(new SearchArguments() { Limit = PaginationLimit, Sort = new List<string>() { "Name" } });
+
+            int Count = 0;
+            foreach(var website in PaginationItems)
+            {
+System.Diagnostics.Debug.WriteLine((Count++).ToString() + " - Paging WebSite name:" + website.Name);
+            }
+
+            Count = 0;
+            var ItemsToDelete = RebillyClient.Websites().Search();
+            foreach (var website in ItemsToDelete)
+            {
+ System.Diagnostics.Debug.WriteLine((Count++).ToString() + " - Deleting WebSite name:" + website.Name);
+                RebillyClient.Websites().Delete(website.Id);
+            }
+
+            */
+        }
+
         public Website CreateWebsite(Website newWebSite)
         {
             var RebillyClient = CreateClient();

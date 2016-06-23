@@ -23,7 +23,8 @@ namespace Rebilly.Core
             return new PaginatorEnumerator<TEntity>(_Service, _Arguments);
         }
 
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+
+        IEnumerator IEnumerable.GetEnumerator()
         {
  	        return (IEnumerator)GetEnumerator();
         }

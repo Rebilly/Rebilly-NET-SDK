@@ -49,6 +49,7 @@
     <Compile Include="Core\NotFoundException.cs" />
     <Compile Include="Core\Paginator.cs" />
     <Compile Include="Core\PaginatorEnumerator.cs" />
+    <Compile Include="Core\RateLimitStatus.cs" />
     <Compile Include="Core\SearchArgumentsConverter.cs" />
     <Compile Include="Core\SearchFilter.cs" />
     <Compile Include="Core\TooManyRequestsException.cs" />

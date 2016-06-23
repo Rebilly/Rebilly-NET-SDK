@@ -74,6 +74,10 @@ namespace Rebilly.Core
             {
                 _Arguments.Offset += _Arguments.Limit;
             }
+            else
+            {
+                _Arguments.Offset = 0;
+            }
 
             _Items = _Service.Search(_Arguments);
             if (_Items.Count > 0)
