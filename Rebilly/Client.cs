@@ -8,13 +8,15 @@ using Rebilly.Core;
 
 namespace Rebilly
 {
-    public class Client : DynamicObject
+    public class Client : DynamicObject, IRebillyClientContext
     {
         public static string SandboxHost = "https://api-sandbox.rebilly.com/v2.1/";
         public static string ProductionHost = "https://api.rebilly.com/v2.1/";
 
         public string BaseUrl { get; private set; }
         public string ApiKey { get; private set; }
+
+        public RateLimitStatus RateLimit { get; private set; }
 
         public Stack<MiddlewareBase> Middleware { get; set; }
  
@@ -100,9 +102,11 @@ namespace Rebilly
 
         private void Initialize()
         {
-            Middleware = new Stack<MiddlewareBase>();
+            RateLimit = new RateLimitStatus();
 
-            Middleware.Push(new AuthenticatorMiddleware() { ApiKey = ApiKey });
+            Middleware = new Stack<MiddlewareBase>();
+            Middleware.Push(new AuthenticatorMiddleware(this) { ApiKey = ApiKey });
+            Middleware.Push(new RateLimitStatusMiddleware(this));
         }
     }
 }

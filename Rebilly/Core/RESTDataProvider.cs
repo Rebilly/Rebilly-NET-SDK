@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -95,11 +96,11 @@ namespace Rebilly.Core
 
                 var Request = new HttpRequestMessage();
                 Request.RequestUri = new Uri((string)this["BaseUrl"] + relativeUrl);
-
-                ApplyMiddlewareToRequest(Request);
                 Request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 Request.Method = method;
-
+ 
+                ApplyMiddlewareToRequest(Request);
+ 
                 if (!string.IsNullOrEmpty(content))
                 {
                     Request.Content = new StringContent(content);
@@ -136,7 +137,7 @@ namespace Rebilly.Core
 
         protected void ValidateResponse(HttpResponseMessage response)
         {
-            if(!response.IsSuccessStatusCode)
+            if (!response.IsSuccessStatusCode && response.ReasonPhrase.ToLower() != "moved temporarily")
             {
                 var Content = response.Content.ReadAsStringAsync().Result;
                 var ResponseMessage = JsonConvert.DeserializeObject<ErrorResponseMessage>(Content);
@@ -168,7 +169,9 @@ namespace Rebilly.Core
             AssertBaseUrlIsNotEmpty();
             AssertApiKeyIsNotEmpty();
 
-            var NewClient = new HttpClient();
+            var ClientHandler = new HttpClientHandler() { AllowAutoRedirect = false };
+
+            var NewClient = new HttpClient(ClientHandler);
             return NewClient;
         }
 

@@ -58,6 +58,7 @@
     <Compile Include="Unit\Core\SearchFilterUnitTests.cs" />
     <Compile Include="Unit\Core\TooManyRequestsExceptionUnitTests.cs" />
     <Compile Include="Unit\Entities\GatewayConfigUnitTests.cs" />
+    <Compile Include="Unit\Entities\OrganziationUnitTests.cs" />
     <Compile Include="Unit\Entities\WebsiteUnitTests.cs" />
     <Compile Include="Unit\Core\RebillyErrorResponseMessageUnitTests.cs" />
     <Compile Include="Unit\Core\SearchArgumentsConverterUnitTests.cs" />
@@ -73,6 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Unit\Exceptions\" />
+    <Folder Include="Unit\Middleware\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />

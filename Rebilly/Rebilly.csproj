@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client.cs" />
+    <Compile Include="Core\IRebillyClientContext.cs" />
     <Compile Include="Core\JsonSerializeUpdatePropertiesResolver.cs" />
     <Compile Include="Core\NotFoundException.cs" />
     <Compile Include="Core\Paginator.cs" />
@@ -58,8 +59,9 @@
     <Compile Include="Entities\Organization.cs" />
     <Compile Include="Core\UnprocessableEntityException.cs" />
     <Compile Include="Middleware\AuthenticatorMiddleware.cs" />
+    <Compile Include="Middleware\RateLimitStatusMiddleware.cs" />
     <Compile Include="Middleware\ResponseLoggerMiddlware.cs" />
-    <Compile Include="Middleware\MiddlewareBase.cs" />
+    <Compile Include="Core\MiddlewareBase.cs" />
     <Compile Include="Core\DataProvider.cs" />
     <Compile Include="Core\DataProviderFactory.cs" />
     <Compile Include="Core\IDataProvider.cs" />

@@ -40,6 +40,12 @@ namespace Tests.Functional
             Assert.AreEqual(UpdatedWebsite.ServiceEmail, CreatedWebsite.ServiceEmail);
             Assert.AreEqual(UpdatedWebsite.CheckoutPageUri, CreatedWebsite.CheckoutPageUri);
 
+
+            // Test to see if rate limit structures have been returned and processed by the Middlware
+            Assert.AreNotEqual(int.MinValue, RebillyClient.RateLimit.Limit);
+            Assert.AreNotEqual(int.MinValue, RebillyClient.RateLimit.Remaining);
+            Assert.AreNotEqual(DateTime.MinValue, RebillyClient.RateLimit.ResetTime);
+
             // Load
             var LoadWebsite = RebillyClient.Websites().Load(UpdatedWebsite.Id);
             Assert.AreEqual(LoadWebsite.Name, UpdatedWebsite.Name);

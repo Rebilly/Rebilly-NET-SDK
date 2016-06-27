@@ -11,7 +11,7 @@ namespace Rebilly.Core
         protected override IList<JsonProperty> CreateProperties(Type type, MemberSerialization memberSerialization)
         {
             var Properties = base.CreateProperties(type, memberSerialization);
-            var FilteredProperties = Properties.Where(p => (p.PropertyName != "CreatedTime" && p.PropertyName != "UpdatedTime")).ToList();
+            var FilteredProperties = Properties.Where(p => (p.PropertyName != "CreatedTime" && p.PropertyName != "UpdatedTime" && p.PropertyName != "Id")).ToList();
 
             FilteredProperties = FilteredProperties.Select(p => { p.PropertyName = char.ToLower(p.PropertyName[0]) + p.PropertyName.Substring(1, p.PropertyName.Length - 1); return p; }).ToList();
 
