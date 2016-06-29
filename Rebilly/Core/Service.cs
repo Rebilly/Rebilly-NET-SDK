@@ -38,6 +38,8 @@ namespace Rebilly.Core
 
         public TEntity Load(string id)
         {
+            AssertIdIsSet(id);
+
             BeforeAction();
             return DataProvider.Load(GetMappedEntityName(), id);
         }
@@ -80,6 +82,8 @@ namespace Rebilly.Core
 
         public void Delete(string id)
         {
+            AssertIdIsSet(id);
+
             var Entity = new TEntity();
             Entity.Id = id;
  
@@ -98,6 +102,15 @@ namespace Rebilly.Core
         {
             var TypeName = typeof(TEntity).Name;
             return TypeName.ToLower() + "s";
+        }
+
+
+        protected void AssertIdIsSet(string id)
+        {
+            if(string.IsNullOrEmpty(id))
+            {
+                throw new RebillyException("id cannot be null");
+            }
         }
     }
 }

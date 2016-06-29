@@ -32,13 +32,14 @@ namespace Rebilly.Core
             var SerializerSettings = new JsonSerializerSettings
             {
                 ContractResolver = new JsonSerializeCreatePropertiesResolver()
+                //,NullValueHandling = NullValueHandling.Ignore
             };
 
             var SerializeText = JsonConvert.SerializeObject(entity, SerializerSettings);
 
             var ResponseText = GetJsonText(RelativeUrl, HttpMethod.Post,SerializeText);
 
-            return JsonConvert.DeserializeObject<TEntity>(ResponseText);
+            return DeserializeObject(ResponseText);
         }
 
 
@@ -47,7 +48,7 @@ namespace Rebilly.Core
             var RelativeUrl = CreateUrl(path + "/" + id + "/", null);
             var ResponseText = GetJsonText(RelativeUrl, HttpMethod.Get, "");
 
-            return JsonConvert.DeserializeObject<TEntity>(ResponseText);
+            return DeserializeObject(ResponseText);            
         }
 
 
@@ -58,13 +59,14 @@ namespace Rebilly.Core
             var SerializerSettings = new JsonSerializerSettings
             {
                 ContractResolver = new JsonSerializeUpdatePropertiesResolver()
+                //,NullValueHandling = NullValueHandling.Ignore
             };
 
             var SerializeText = JsonConvert.SerializeObject(entity, SerializerSettings);
 
             var ResponseText = GetJsonText(RelativeUrl, HttpMethod.Put, SerializeText);
 
-            return JsonConvert.DeserializeObject<TEntity>(ResponseText);
+            return DeserializeObject(ResponseText);
         }
 
 
@@ -137,6 +139,7 @@ namespace Rebilly.Core
 
         protected void ValidateResponse(HttpResponseMessage response)
         {
+            /// TODO: figure out why I need to ignor the moved temporarily response
             if (!response.IsSuccessStatusCode && response.ReasonPhrase.ToLower() != "moved temporarily")
             {
                 var Content = response.Content.ReadAsStringAsync().Result;
@@ -173,6 +176,13 @@ namespace Rebilly.Core
 
             var NewClient = new HttpClient(ClientHandler);
             return NewClient;
+        }
+
+
+        private TEntity DeserializeObject(string responseText)
+        {
+            var JsonConverters = new JsonConverter[] { new GatewayAccountJsonCreationConverter() };
+            return JsonConvert.DeserializeObject<TEntity>(responseText, JsonConverters);
         }
 
 

@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client.cs" />
+    <Compile Include="Core\GatewayAccountJsonCreationConverter.cs" />
     <Compile Include="Core\IRebillyClientContext.cs" />
     <Compile Include="Core\JsonSerializeUpdatePropertiesResolver.cs" />
     <Compile Include="Core\NotFoundException.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="Core\SearchArgumentsConverter.cs" />
     <Compile Include="Core\SearchFilter.cs" />
     <Compile Include="Core\TooManyRequestsException.cs" />
+    <Compile Include="Entities\A1GatewayConfig.cs" />
     <Compile Include="Entities\GatewayConfig.cs" />
     <Compile Include="Entities\IEntity.cs" />
     <Compile Include="Entities\Organization.cs" />

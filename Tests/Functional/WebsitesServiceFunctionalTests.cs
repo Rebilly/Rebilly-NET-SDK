@@ -125,10 +125,18 @@ System.Diagnostics.Debug.WriteLine((Count++).ToString() + " - Paging WebSite nam
             */
         }
 
-        public Website CreateWebsite(Website newWebSite)
+        public Website CreateWebsite(Website newWebSite = null)
         {
             var RebillyClient = CreateClient();
-            return RebillyClient.Websites().Create(newWebSite);
+
+            if (newWebSite == null)
+            {
+                return RebillyClient.Websites().Create(GetNewWebsite());
+            }
+            else
+            {
+                return RebillyClient.Websites().Create(newWebSite);
+            }
         }
 
         protected Website GetNewWebsite()
