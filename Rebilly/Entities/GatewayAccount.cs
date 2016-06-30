@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Rebilly.Core;
+using System.Collections.Generic;
 
 namespace Rebilly.Entities
 {

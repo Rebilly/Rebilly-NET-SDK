@@ -1,4 +1,6 @@
 ﻿using NUnit.Framework;
+
+using Rebilly.Core;
 using Rebilly.Entities;
 
 namespace Tests.Unit.Entities

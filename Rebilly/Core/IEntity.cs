@@ -1,5 +1,5 @@
 ﻿
-namespace Rebilly.Entities
+namespace Rebilly.Core
 {
     public interface IEntity
     {

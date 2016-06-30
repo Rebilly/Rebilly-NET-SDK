@@ -1,4 +1,5 @@
-﻿
+﻿using Rebilly.Core;
+
 namespace Rebilly.Entities
 {
     public class A1GatewayConfig : GatewayConfig

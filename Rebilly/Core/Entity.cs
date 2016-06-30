@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Rebilly.Entities
+namespace Rebilly.Core
 {
     public class Entity : IEntity
     {

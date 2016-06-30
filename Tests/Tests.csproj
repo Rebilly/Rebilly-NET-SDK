@@ -45,12 +45,14 @@
   <ItemGroup>
     <Compile Include="Functional\FunctionalTestBase.cs" />
     <Compile Include="Functional\GatewayAccountsServiceFunctionalTests.cs" />
+    <Compile Include="Functional\NoteServiceFunctionalTests.cs" />
     <Compile Include="Functional\OrganizationsServiceFunctionalTests.cs" />
     <Compile Include="Functional\WebsitesServiceFunctionalTests.cs" />
     <Compile Include="Integration\SearchArgumentsConverterIntegrationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestConfig.cs" />
     <Compile Include="Unit\Core\ClientExceptionUnitTests.cs" />
+    <Compile Include="Unit\Entities\CustomerUnitTests.cs" />
     <Compile Include="Unit\Core\ErrorResponseMessageUnitTests.cs" />
     <Compile Include="Unit\Core\RateLimitStatusUnitTest.cs" />
     <Compile Include="Unit\Core\RebillyExceptionUnitTests.cs" />
@@ -58,7 +60,9 @@
     <Compile Include="Unit\Core\SearchFilterUnitTests.cs" />
     <Compile Include="Unit\Core\TooManyRequestsExceptionUnitTests.cs" />
     <Compile Include="Unit\Entities\A1GatewayConfigUnitTests.cs" />
+    <Compile Include="Unit\Entities\NoteUnitTests.cs" />
     <Compile Include="Unit\Entities\OrganziationUnitTests.cs" />
+    <Compile Include="Unit\Entities\ContactUnitTests.cs" />
     <Compile Include="Unit\Entities\WebsiteUnitTests.cs" />
     <Compile Include="Unit\Core\RebillyErrorResponseMessageUnitTests.cs" />
     <Compile Include="Unit\Core\SearchArgumentsConverterUnitTests.cs" />
