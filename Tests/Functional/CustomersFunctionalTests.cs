@@ -46,9 +46,9 @@ namespace Tests.Functional
             Assert.AreEqual("127.0.0.1", LoadedCustomer.IpAddress);
 
             // Search
-            var EmailFilter = new SearchFilter() { Field = "Email", Values = new List<string>() { LoadedCustomer.Email } };
-            var SearchedCustomers = CustomersService.Search(new SearchArguments() { Filters = new List<SearchFilter>(){ EmailFilter }});
-            Assert.AreEqual(1, SearchedCustomers.Count);
+            var FirstNameFilter = new SearchFilter() { Field = "FirstName", Values = new List<string>() { LoadedCustomer.FirstName } };
+            var SearchedCustomers = CustomersService.Search(new SearchArguments() { Filters = new List<SearchFilter>() { FirstNameFilter } });
+            Assert.LessOrEqual(1, SearchedCustomers.Count);
 
 
             //CustomersService.Delete(NewCustomer); // Delete method not allowed
