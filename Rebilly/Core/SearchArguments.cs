@@ -11,7 +11,7 @@ namespace Rebilly.Core
 
             Sort = new List<string>();
             Fields = new List<string>();
-            Filter = new SearchFilter();
+            Filters = new List<SearchFilter>();
         }
 
         public int Limit { get; set; }
@@ -19,7 +19,7 @@ namespace Rebilly.Core
 
         public List<string> Sort { get;  set;  }
         public List<string> Fields { get; set;  }
-        public SearchFilter Filter { get;  set;  }
+        public List<SearchFilter> Filters { get;  set;  }
         
     }
 }

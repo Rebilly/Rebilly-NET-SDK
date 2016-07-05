@@ -48,11 +48,13 @@ namespace Tests.Integration
             var Converter = new SearchArgumentsConverter();
 
             var Arguments = new SearchArguments();
-            Arguments.Filter.Field = "Field1";
-            Arguments.Filter.Values = new List<string>() { "test1", "test2" };
 
+            var Filter = new SearchFilter();
+            Filter.Field = "Field1";
+            Filter.Values = new List<string>() { "test1", "test2" };
+            Arguments.Filters.Add(Filter);
 
-            Assert.AreEqual("Field1:test1,test2", Converter.ToDictionary(Arguments)["Filter"]);
+            Assert.AreEqual("field1:test1,test2", Converter.ToDictionary(Arguments)["Filter"]);
         }
 
 
@@ -62,11 +64,35 @@ namespace Tests.Integration
             var Converter = new SearchArgumentsConverter();
 
             var Arguments = new SearchArguments();
-            Arguments.Filter.Field = "Field1";
-            Arguments.Filter.Values = new List<string>() { "test1", "test2" };
+
+            var Filter = new SearchFilter();
+            Filter.Field = "Field1";
+            Filter.Values = new List<string>() { "test1", "test2" };
+            Arguments.Filters.Add(Filter);
 
 
-            Assert.AreEqual("filter=Field1:test1,test2", Converter.ToQueryString(Arguments));
+            Assert.AreEqual("filter=field1:test1,test2", Converter.ToQueryString(Arguments));
+        }
+
+        [Test]
+        public void TestConverterToQueryStringWithTwoFieldsIsEqualTo()
+        {
+            var Converter = new SearchArgumentsConverter();
+
+            var Arguments = new SearchArguments();
+
+            var Filter = new SearchFilter();
+            Filter.Field = "Field1";
+            Filter.Values = new List<string>() { "test1", "test2" };
+            Arguments.Filters.Add(Filter);
+
+            var Filter2 = new SearchFilter();
+            Filter2.Field = "Field2";
+            Filter2.Values = new List<string>() { "test3", "test4" };
+            Arguments.Filters.Add(Filter2);
+
+
+            Assert.AreEqual("filter=field1:test1,test2;field2:test3,test4", Converter.ToQueryString(Arguments));
         }
 
 
@@ -78,10 +104,13 @@ namespace Tests.Integration
             var Arguments = new SearchArguments();
             Arguments.Offset = 0;
             Arguments.Limit = 10;
-            Arguments.Filter.Field = "Field1";
-            Arguments.Filter.Values = new List<string>() { "test1", "test2" };
 
-            Assert.AreEqual("offset=0&limit=10&filter=Field1:test1,test2", Converter.ToQueryString(Arguments));
+            var Filter = new SearchFilter();
+            Filter.Field = "Field1";
+            Filter.Values = new List<string>() { "test1", "test2" };
+            Arguments.Filters.Add(Filter);
+
+            Assert.AreEqual("offset=0&limit=10&filter=field1:test1,test2", Converter.ToQueryString(Arguments));
         }
 
 
@@ -93,11 +122,15 @@ namespace Tests.Integration
             var Arguments = new SearchArguments();
             Arguments.Offset = 2;
             Arguments.Limit = 123;
-            Arguments.Filter.Field = "Field1";
-            Arguments.Filter.Values = new List<string>() { "test1", "test2" };
             Arguments.Sort = new List<string>() { "test1", "-test2" };
+            
+            var Filter = new SearchFilter();
+            Filter.Field = "Field1";
+            Filter.Values = new List<string>() { "test1", "test2" };
+            Arguments.Filters.Add(Filter);
 
-            Assert.AreEqual("offset=2&limit=123&filter=Field1:test1,test2&sort=test1,-test2", Converter.ToQueryString(Arguments));
+
+            Assert.AreEqual("offset=2&limit=123&filter=field1:test1,test2&sort=test1,-test2", Converter.ToQueryString(Arguments));
         }
 
     }

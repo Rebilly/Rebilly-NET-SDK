@@ -43,9 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Functional\CustomersFunctionalTests.cs" />
     <Compile Include="Functional\FunctionalTestBase.cs" />
     <Compile Include="Functional\GatewayAccountsServiceFunctionalTests.cs" />
-    <Compile Include="Functional\NoteServiceFunctionalTests.cs" />
+    <Compile Include="Functional\NotesServiceFunctionalTests.cs" />
     <Compile Include="Functional\OrganizationsServiceFunctionalTests.cs" />
     <Compile Include="Functional\WebsitesServiceFunctionalTests.cs" />
     <Compile Include="Integration\SearchArgumentsConverterIntegrationTests.cs" />

@@ -80,7 +80,7 @@ namespace Tests.Unit.Core
         public void TestFilterDefault()
         {
             var Arguments = new SearchArguments();
-            Assert.IsNotNull(Arguments.Filter);
+            Assert.IsNotNull(Arguments.Filters);
         }
 
 
@@ -88,8 +88,8 @@ namespace Tests.Unit.Core
         public void TestFilterIsEqualTo()
         {
             var Arguments = new SearchArguments();
-            Arguments.Filter = new SearchFilter() { Field = "test" };
-            Assert.AreEqual("test", Arguments.Filter.Field);
+            Arguments.Filters = new List<SearchFilter>();
+            Assert.AreEqual(0, Arguments.Filters.Count);
         }
 
 

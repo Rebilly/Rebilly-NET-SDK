@@ -115,7 +115,7 @@ namespace Tests.Functional
         {
             var TestOrganization = new Organization()
             {
-                Name = "TestOrgnazation-" + Guid.NewGuid().ToString(),
+                Name = "TestOrganization-" + Guid.NewGuid().ToString(),
                 Address = "Address Line 1",
                 Address2 = "Address Line 2",
                 City = "Santa Barbara",

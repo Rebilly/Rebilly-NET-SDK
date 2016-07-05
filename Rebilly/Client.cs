@@ -62,6 +62,18 @@ namespace Rebilly
         }
 
 
+        public CustomersService Customers()
+        {
+            return GetService<CustomersService>();
+        }
+
+
+        public NotesService Notes()
+        {
+            return GetService<NotesService>();
+        }
+
+
         public TService GetService<TService>() where TService : ProviderBase, IService, new()
         {
             var Factory = new ServiceFactory();

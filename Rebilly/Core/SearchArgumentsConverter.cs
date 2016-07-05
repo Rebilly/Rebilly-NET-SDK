@@ -25,10 +25,23 @@ namespace Rebilly.Core
                 ReturnArgs.Add("Limit", searchArguments.Limit.ToString());
             }
 
-            if (!string.IsNullOrEmpty(searchArguments.Filter.Field) && searchArguments.Filter.Values.Count > 0)
+            if (searchArguments.Filters != null)
             {
-                string Filter = searchArguments.Filter.Field + ":" + string.Join(",",searchArguments.Filter.Values);
-                ReturnArgs.Add("Filter", Filter);
+                var Filters = new List<string>();
+                foreach (var filter in searchArguments.Filters)
+                {
+                    if (!string.IsNullOrEmpty(filter.Field) && filter.Values.Count > 0)
+                    {
+                        string LoweredField = char.ToLower(filter.Field[0]) + filter.Field.Substring(1, filter.Field.Length - 1);
+                        string Filter = LoweredField + ":" + string.Join(",", filter.Values);
+                        Filters.Add(Filter);
+                    }
+                }
+
+                if (Filters.Count > 0)
+                {
+                    ReturnArgs.Add("Filter", string.Join(";", Filters));
+                }
             }
 
             if (searchArguments.Sort.Count > 0)

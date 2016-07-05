@@ -30,7 +30,8 @@ namespace Tests.Unit.Core
         public void TestConverterWithAgumentsIsEqualTo()
         {
             var Converter = new SearchArgumentsConverter();
-            Assert.AreEqual(0, Converter.ToDictionary(new SearchArguments()).Count);        
+            var Args = Converter.ToDictionary(new SearchArguments());
+            Assert.AreEqual(0, Args.Count);        
         }
     }
 }
