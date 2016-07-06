@@ -17,7 +17,7 @@ namespace Tests.Functional
         public void TestCreateUpdateLoadSearchDelete()
         {
             // Create
-            var CustomersTest = new CustomersFunctionalTests();
+            var CustomersTest = new CustomersServiceFunctionalTests();
             var NewCustomer = CustomersTest.CreateCustomer();
 
             var NewNote = CreateNote(NewCustomer);

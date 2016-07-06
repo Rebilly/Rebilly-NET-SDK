@@ -43,7 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Functional\CustomersFunctionalTests.cs" />
+    <Compile Include="Functional\ContactsServiceFunctionalTests.cs" />
+    <Compile Include="Functional\CustomersServiceFunctionalTests.cs" />
     <Compile Include="Functional\FunctionalTestBase.cs" />
     <Compile Include="Functional\GatewayAccountsServiceFunctionalTests.cs" />
     <Compile Include="Functional\NotesServiceFunctionalTests.cs" />
@@ -61,9 +62,11 @@
     <Compile Include="Unit\Core\SearchFilterUnitTests.cs" />
     <Compile Include="Unit\Core\TooManyRequestsExceptionUnitTests.cs" />
     <Compile Include="Unit\Entities\A1GatewayConfigUnitTests.cs" />
+    <Compile Include="Unit\Entities\LeadSourceUnitTests.cs" />
     <Compile Include="Unit\Entities\NoteUnitTests.cs" />
     <Compile Include="Unit\Entities\OrganziationUnitTests.cs" />
     <Compile Include="Unit\Entities\ContactUnitTests.cs" />
+    <Compile Include="Unit\Entities\PaymentCardUnitTests.cs" />
     <Compile Include="Unit\Entities\WebsiteUnitTests.cs" />
     <Compile Include="Unit\Core\RebillyErrorResponseMessageUnitTests.cs" />
     <Compile Include="Unit\Core\SearchArgumentsConverterUnitTests.cs" />

@@ -74,6 +74,24 @@ namespace Rebilly
         }
 
 
+        public ContactsService Contacts()
+        {
+            return GetService<ContactsService>();
+        }
+
+
+        public PaymentCardsService PaymentCards()
+        {
+            return GetService<PaymentCardsService>();
+        }
+
+
+        public LeadSourcesService LeadSources()
+        {
+            return GetService<LeadSourcesService>();
+        }
+
+
         public TService GetService<TService>() where TService : ProviderBase, IService, new()
         {
             var Factory = new ServiceFactory();
