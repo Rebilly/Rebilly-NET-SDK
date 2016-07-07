@@ -14,7 +14,7 @@ namespace Tests.Functional
         {
 
             var OrganizationsTests = new OrganizationsServiceFunctionalTests();
-            var NewOrganization = OrganizationsTests.CreateOrganizaion();
+            var NewOrganization = OrganizationsTests.CreateOrganization();
 
             var WebsitesTests = new WebsitesServiceFunctionalTests();
             var NewWebsite = WebsitesTests.CreateWebsite();

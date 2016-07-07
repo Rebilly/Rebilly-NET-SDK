@@ -16,7 +16,7 @@ namespace Tests.Functional
         public void TestCreateUpdateLoadSearchDelete()
         {
             // Create
-            var NewOrganization = CreateOrganizaion();
+            var NewOrganization = CreateOrganization();
 
             // Validate create
             Assert.IsNotNull(NewOrganization.Id);
@@ -111,7 +111,7 @@ namespace Tests.Functional
         }
 
 
-        public Organization CreateOrganizaion()
+        public Organization CreateOrganization()
         {
             var TestOrganization = new Organization()
             {

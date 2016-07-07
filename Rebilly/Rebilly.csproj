@@ -95,6 +95,7 @@
     <Compile Include="Core\Service.cs" />
     <Compile Include="Core\IService.cs" />
     <Compile Include="Services\PaymentCardsService.cs" />
+    <Compile Include="Services\PlansService.cs" />
     <Compile Include="Services\ServiceFactory.cs" />
     <Compile Include="Services\WebsitesService.cs" />
     <Compile Include="Core\ApiKeyProvider.cs" />

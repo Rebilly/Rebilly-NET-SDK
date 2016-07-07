@@ -91,6 +91,11 @@ namespace Rebilly
             return GetService<LeadSourcesService>();
         }
 
+        public PlansService Plans()
+        {
+            return GetService<PlansService>();
+        }
+
 
         public TService GetService<TService>() where TService : ProviderBase, IService, new()
         {
