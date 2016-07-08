@@ -39,6 +39,23 @@ namespace Tests.Functional
             Assert.AreEqual("Billy", NewContact.FirstName);
             Assert.AreEqual("Smith", NewContact.LastName);
 
+
+            // Create with Specific Id
+            string SpecificId = Guid.NewGuid().ToString();
+            var NewContactWithId = CreateContact(NewCustomer, NewOrganization, SpecificId);
+            Assert.AreEqual(SpecificId, NewContactWithId.Id);
+            Assert.AreEqual(NewCustomer.Id, NewContactWithId.CustomerId);
+            Assert.AreEqual(NewOrganization.Name, NewContactWithId.Organization);
+            Assert.AreEqual("123 Compton Ln.", NewContactWithId.Address);
+            Assert.AreEqual("Unit B", NewContactWithId.Address2);
+            Assert.AreEqual("Santa Barbara", NewContactWithId.City);
+            Assert.AreEqual("CA", NewContactWithId.Region);
+            Assert.AreEqual("US", NewContactWithId.Country);
+            Assert.AreEqual("93109", NewContactWithId.PostalCode);
+            Assert.AreEqual("Billy", NewContactWithId.FirstName);
+            Assert.AreEqual("Smith", NewContactWithId.LastName);
+
+
             // Update
             //var UpatedContat = ContactsService.Update(NewContact); // Update not allowed
 
@@ -83,7 +100,7 @@ namespace Tests.Functional
         }
 
 
-        public Contact CreateContact(Customer customer, Organization organization)
+        public Contact CreateContact(Customer customer, Organization organization, string specificId = null)
         {
             var NewContact = new Contact()
             {
@@ -98,6 +115,12 @@ namespace Tests.Functional
                 FirstName = "Billy",
                 LastName = "Smith"
             };
+
+            if(specificId != null)
+            {
+                NewContact.Id = specificId;
+            }
+
 
             var RebillyClient = CreateClient();
             return RebillyClient.Contacts().Create(NewContact);

@@ -71,7 +71,7 @@ namespace Tests.Functional
         }
 
 
-        Note CreateNote(Customer customer) 
+        public Note CreateNote(Customer customer) 
         {
             var NewNote = new Note();
             NewNote.RelatedId = customer.Id;
@@ -83,6 +83,5 @@ namespace Tests.Functional
 
             return NotesServies.Create(NewNote);
         }
-
     }
 }

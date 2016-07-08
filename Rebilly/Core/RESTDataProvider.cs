@@ -32,12 +32,27 @@ namespace Rebilly.Core
             var SerializerSettings = new JsonSerializerSettings
             {
                 ContractResolver = new JsonSerializeCreatePropertiesResolver()
-                //,NullValueHandling = NullValueHandling.Ignore
             };
+
+            // Create with a specific Id
+            string OldId = string.Empty;
+            var CurrentHttpMethod = HttpMethod.Post;
+            if(!string.IsNullOrEmpty(entity.Id))
+            {
+                OldId = entity.Id;
+                RelativeUrl += "/" + entity.Id + "/";
+                entity.Id = null;
+                CurrentHttpMethod = HttpMethod.Put;
+            }
 
             var SerializeText = JsonConvert.SerializeObject(entity, SerializerSettings);
 
-            var ResponseText = GetJsonText(RelativeUrl, HttpMethod.Post,SerializeText);
+            var ResponseText = GetJsonText(RelativeUrl, CurrentHttpMethod, SerializeText);
+
+            if (!string.IsNullOrEmpty(OldId))
+            {
+                entity.Id = OldId;
+            }
 
             return DeserializeObject(ResponseText);
         }

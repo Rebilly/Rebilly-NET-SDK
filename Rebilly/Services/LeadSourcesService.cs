@@ -7,5 +7,10 @@ namespace Rebilly.Services
     {
         public LeadSourcesService() : base() { }
         public LeadSourcesService(string dataProviderName) : base(dataProviderName) { }
+
+        protected override string GetMappedEntityName()
+        {
+            return "lead-sources";
+        }
     }
 }
