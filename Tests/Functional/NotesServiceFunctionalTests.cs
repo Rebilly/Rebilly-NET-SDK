@@ -65,9 +65,7 @@ namespace Tests.Functional
             var SearchedArchivedNotes = NotesServies.Search(new SearchArguments() { Filters = new List<SearchFilter>() { IdFilter } });
             Assert.AreEqual(0, SearchedArchivedNotes.Count);
 
-
             //NotesServies.Delete(ArchivedNote); // Delete method not allowed
-
         }
 
 

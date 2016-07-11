@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 
 using Rebilly.Core;
 using Rebilly.Entities;
@@ -232,8 +233,8 @@ namespace Tests.Unit.Entities
         public void TestExpireTimeIsEqualTo()
         {
             var Plan = new Plan();
-            Plan.ExpireTime = "monthly";
-            Assert.AreEqual("monthly", Plan.ExpireTime);
+            Plan.ExpireTime = DateTime.Parse("2017-02-11 03:01:01");
+            Assert.AreEqual("2017-02-11 03:01:01", Plan.ExpireTime.Value.ToString("yyyy-MM-dd hh:mm:ss"));
         }
 
 

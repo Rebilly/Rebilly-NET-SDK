@@ -31,7 +31,10 @@ namespace Rebilly.Core
 
             var SerializerSettings = new JsonSerializerSettings
             {
-                ContractResolver = new JsonSerializeCreatePropertiesResolver()
+                ContractResolver = new JsonSerializeCreatePropertiesResolver(),
+                DateFormatHandling = DateFormatHandling.IsoDateFormat,
+                DateFormatString = "yyyy-MM-dd hh:mm:ss"
+
             };
 
             // Create with a specific Id

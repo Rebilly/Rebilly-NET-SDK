@@ -1,6 +1,5 @@
 ﻿using Rebilly.Core;
 
-
 namespace Rebilly.Entities
 {
     public class Organization : Entity

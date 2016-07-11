@@ -66,6 +66,7 @@
     <Compile Include="Core\UnprocessableEntityException.cs" />
     <Compile Include="Entities\PaymentCard.cs" />
     <Compile Include="Entities\Plan.cs" />
+    <Compile Include="Entities\Subscription.cs" />
     <Compile Include="Middleware\AuthenticatorMiddleware.cs" />
     <Compile Include="Middleware\RateLimitStatusMiddleware.cs" />
     <Compile Include="Middleware\ResponseLoggerMiddlware.cs" />

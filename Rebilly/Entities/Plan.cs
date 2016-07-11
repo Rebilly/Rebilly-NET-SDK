@@ -1,4 +1,5 @@
-﻿using Rebilly.Core;
+﻿using System;
+using Rebilly.Core;
 
 namespace Rebilly.Entities
 {
@@ -17,7 +18,7 @@ namespace Rebilly.Entities
         public string TrialPeriodUnit { get; set; }
         public int? TrialPeriodLength { get; set; }
         public decimal? SetupAmount { get; set; }
-        public string ExpireTime { get; set; }
+        public DateTime? ExpireTime { get; set; }
 
         public string ContractTermUnit { get; set; }
         public int? ContractTermLength { get; set; }
