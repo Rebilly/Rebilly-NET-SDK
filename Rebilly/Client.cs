@@ -97,6 +97,12 @@ namespace Rebilly
         }
 
 
+        public SubscriptionsService Subscriptions()
+        {
+            return GetService<SubscriptionsService>();
+        }
+
+
         public TService GetService<TService>() where TService : ProviderBase, IService, new()
         {
             var Factory = new ServiceFactory();

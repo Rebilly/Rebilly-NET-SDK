@@ -98,6 +98,7 @@
     <Compile Include="Services\PaymentCardsService.cs" />
     <Compile Include="Services\PlansService.cs" />
     <Compile Include="Services\ServiceFactory.cs" />
+    <Compile Include="Services\SubscriptionsService.cs" />
     <Compile Include="Services\WebsitesService.cs" />
     <Compile Include="Core\ApiKeyProvider.cs" />
     <Compile Include="Core\Pluralizer.cs" />

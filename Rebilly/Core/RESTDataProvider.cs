@@ -33,7 +33,8 @@ namespace Rebilly.Core
             {
                 ContractResolver = new JsonSerializeCreatePropertiesResolver(),
                 DateFormatHandling = DateFormatHandling.IsoDateFormat,
-                DateFormatString = "yyyy-MM-dd hh:mm:ss"
+                DateFormatString = "yyyy-MM-dd hh:mm:ss",
+                NullValueHandling = NullValueHandling.Ignore
 
             };
 
@@ -76,8 +77,10 @@ namespace Rebilly.Core
 
             var SerializerSettings = new JsonSerializerSettings
             {
-                ContractResolver = new JsonSerializeUpdatePropertiesResolver()
-                //,NullValueHandling = NullValueHandling.Ignore
+                ContractResolver = new JsonSerializeUpdatePropertiesResolver(),
+                DateFormatHandling = DateFormatHandling.IsoDateFormat,
+                DateFormatString = "yyyy-MM-dd hh:mm:ss",
+                NullValueHandling = NullValueHandling.Ignore
             };
 
             var SerializeText = JsonConvert.SerializeObject(entity, SerializerSettings);
