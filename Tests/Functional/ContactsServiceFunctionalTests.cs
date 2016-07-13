@@ -121,7 +121,6 @@ namespace Tests.Functional
                 NewContact.Id = specificId;
             }
 
-
             var RebillyClient = CreateClient();
             return RebillyClient.Contacts().Create(NewContact);
         }

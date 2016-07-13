@@ -56,6 +56,7 @@
     <Compile Include="Core\SearchFilter.cs" />
     <Compile Include="Core\TooManyRequestsException.cs" />
     <Compile Include="Entities\A1GatewayConfig.cs" />
+    <Compile Include="Entities\Blacklist.cs" />
     <Compile Include="Entities\Contact.cs" />
     <Compile Include="Entities\Customer.cs" />
     <Compile Include="Entities\GatewayConfig.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="Entities\PaymentCard.cs" />
     <Compile Include="Entities\Plan.cs" />
     <Compile Include="Entities\Subscription.cs" />
+    <Compile Include="Entities\PaymentCardToken.cs" />
     <Compile Include="Middleware\AuthenticatorMiddleware.cs" />
     <Compile Include="Middleware\RateLimitStatusMiddleware.cs" />
     <Compile Include="Middleware\ResponseLoggerMiddlware.cs" />
@@ -77,6 +79,7 @@
     <Compile Include="Core\IProviderBase.cs" />
     <Compile Include="Core\JsonSerializeCreatePropertiesResolver.cs" />
     <Compile Include="Core\MockRESTDataProvider.cs" />
+    <Compile Include="Services\BlacklistsService.cs" />
     <Compile Include="Services\ContactsService.cs" />
     <Compile Include="Services\CustomersService.cs" />
     <Compile Include="Services\LeadSourcesService.cs" />
@@ -96,6 +99,7 @@
     <Compile Include="Core\Service.cs" />
     <Compile Include="Core\IService.cs" />
     <Compile Include="Services\PaymentCardsService.cs" />
+    <Compile Include="Services\PaymentCardTokensService.cs" />
     <Compile Include="Services\PlansService.cs" />
     <Compile Include="Services\ServiceFactory.cs" />
     <Compile Include="Services\SubscriptionsService.cs" />

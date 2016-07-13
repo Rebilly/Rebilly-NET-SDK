@@ -103,6 +103,18 @@ namespace Rebilly
         }
 
 
+        public BlacklistsService Blacklists()
+        {
+            return GetService<BlacklistsService>();
+        }
+
+
+        public PaymentCardTokensService PaymentCardTokens()
+        {
+            return GetService<PaymentCardTokensService>();
+        }
+
+
         public TService GetService<TService>() where TService : ProviderBase, IService, new()
         {
             var Factory = new ServiceFactory();

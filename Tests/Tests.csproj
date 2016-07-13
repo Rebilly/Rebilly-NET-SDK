@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Functional\BlacklistsServiceFunctionalTests.cs" />
     <Compile Include="Functional\ContactsServiceFunctionalTests.cs" />
     <Compile Include="Functional\CustomersServiceFunctionalTests.cs" />
     <Compile Include="Functional\FunctionalTestBase.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestConfig.cs" />
     <Compile Include="Unit\Core\ClientExceptionUnitTests.cs" />
+    <Compile Include="Unit\Entities\BlacklistUnitTests.cs" />
     <Compile Include="Unit\Entities\CustomerUnitTests.cs" />
     <Compile Include="Unit\Core\ErrorResponseMessageUnitTests.cs" />
     <Compile Include="Unit\Core\RateLimitStatusUnitTest.cs" />
@@ -70,6 +72,7 @@
     <Compile Include="Unit\Entities\NoteUnitTests.cs" />
     <Compile Include="Unit\Entities\OrganziationUnitTests.cs" />
     <Compile Include="Unit\Entities\ContactUnitTests.cs" />
+    <Compile Include="Unit\Entities\PaymentCardTokenUnitTests.cs" />
     <Compile Include="Unit\Entities\PaymentCardUnitTests.cs" />
     <Compile Include="Unit\Entities\PlanUnitTests.cs" />
     <Compile Include="Unit\Entities\SubscriptionUnitTests.cs" />
