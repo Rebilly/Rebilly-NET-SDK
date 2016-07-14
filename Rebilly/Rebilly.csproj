@@ -56,6 +56,7 @@
     <Compile Include="Core\SearchFilter.cs" />
     <Compile Include="Core\TooManyRequestsException.cs" />
     <Compile Include="Entities\A1GatewayConfig.cs" />
+    <Compile Include="Entities\BankAccount.cs" />
     <Compile Include="Entities\Blacklist.cs" />
     <Compile Include="Entities\Contact.cs" />
     <Compile Include="Entities\Customer.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Core\IProviderBase.cs" />
     <Compile Include="Core\JsonSerializeCreatePropertiesResolver.cs" />
     <Compile Include="Core\MockRESTDataProvider.cs" />
+    <Compile Include="Services\BankAccountsService.cs" />
     <Compile Include="Services\BlacklistsService.cs" />
     <Compile Include="Services\ContactsService.cs" />
     <Compile Include="Services\CustomersService.cs" />

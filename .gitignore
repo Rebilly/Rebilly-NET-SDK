@@ -159,3 +159,5 @@ $RECYCLE.BIN/
 # nuget
 packages/**/*
 !packages/repositories.config
+
+Rebilly.sln.GhostDoc.xml

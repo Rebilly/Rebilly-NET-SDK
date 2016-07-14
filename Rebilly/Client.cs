@@ -114,6 +114,11 @@ namespace Rebilly
             return GetService<PaymentCardTokensService>();
         }
 
+        public BankAccountsService BankAccounts()
+        {
+            return GetService<BankAccountsService>();
+        }
+
 
         public TService GetService<TService>() where TService : ProviderBase, IService, new()
         {
