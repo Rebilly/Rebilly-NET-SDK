@@ -53,7 +53,7 @@ Create a Customer
   
   var CreateCustomer = new Customer()
   {
-      Email = Guid.NewGuid().ToString() + "@gmail.com",
+      Email = "youremailaddress@yourdomain.com",
       FirstName = "Bill",
       LastName = "Smith",
       IpAddress = "123.123.133.133"
