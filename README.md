@@ -7,13 +7,15 @@ The **Rebilly NET SDK** makes it easy for developers to access
 
 ## Installation
 
-There are two ways to download and install the Rebilly NET SDK.
+There are three ways to download and install the Rebilly NET SDK.
 
   1. From the [Package Manager Console](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)
 
   ```
   Install-Package Rebilly.dll -Pre
   ```
+  
+  2. Searching for 'Rebilly' using the [Package Manager Dialog](https://docs.nuget.org/consume/package-manager-dialog)
 
   2. Build from the source
 
