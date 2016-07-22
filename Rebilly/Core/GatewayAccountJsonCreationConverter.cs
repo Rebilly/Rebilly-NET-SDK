@@ -28,6 +28,7 @@ namespace Rebilly.Core
             {
                 Destination.GatewayConfig = new A1GatewayConfig();
             }
+            //TODO: payvision
 
             serializer.Populate(LoadedObject.CreateReader(), Destination);
             return Destination;

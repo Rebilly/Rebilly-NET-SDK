@@ -1,18 +1,16 @@
-
-
 <?xml version="1.0"?>
-<package >
+<package>
   <metadata>
-    <id>Terrarium.Sdk</id>
+    <id>Rebilly.dll</id>
     <version>1.0.1</version>
     <title>Rebilly .NET SDK</title>
     <authors>Ryan McFadden</authors>
     <owners>Rebilly</owners>
+    <description>The Rebilly .NET SDK makes it easy for developers to access Rebilly REST APIs from their .NET code.</description>
     <licenseUrl>https://github.com/Rebilly/Rebilly-NET-SDK/blob/master/LICENSE.md</licenseUrl>
     <projectUrl>https://github.com/Rebilly/Rebilly-NET-SDK/</projectUrl>
-    <iconUrl>https://github.com/Rebilly/Rebilly-NET-SDK/Rebilly.ico</iconUrl>
+    <iconUrl>https://raw.githubusercontent.com/Rebilly/Rebilly-NET-SDK/master/Rebilly.ico</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description></description>
     <releaseNotes></releaseNotes>
     <copyright>Copyright &#x00A9; Rebilly.  All rights reserved.</copyright>
     <tags>sdk billing subscription payment processing</tags>
@@ -20,3 +18,4 @@
   <files>
     <file src="Rebilly\bin\$configuration$\Rebilly.dll" target="lib\net40\" />
   </files>
+ </package>
