@@ -17,7 +17,7 @@ There are two ways to download and install the Rebilly NET SDK.
 
   2. Build from the source
 
-  *Clone the Rebilly .NET SDK Repo:
+  * Clone the Rebilly .NET SDK Repo:
   ```
   git clone https://github.com/Rebilly/Rebilly-NET-SDK.git
   ```
