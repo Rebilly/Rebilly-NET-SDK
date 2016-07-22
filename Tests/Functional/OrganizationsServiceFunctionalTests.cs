@@ -10,7 +10,7 @@ using Rebilly.Entities;
 namespace Tests.Functional
 {
     [TestFixture]
-    public class OrganizationsServiceFunctionalTests : FunctionalTestBase
+    public class OrganizationsServiceFunctionalTests : TestBase
     {
         [Test]
         public void TestCreateUpdateLoadSearchDelete()

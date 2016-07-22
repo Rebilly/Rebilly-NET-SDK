@@ -10,7 +10,7 @@ using Rebilly.Entities;
 namespace Tests.Functional
 {
     [TestFixture]
-    public class BlacklistsServiceFunctionalTests : FunctionalTestBase
+    public class BlacklistsServiceFunctionalTests : TestBase
     {
         [Test]
         public void TestCreateUpdateLoadSearchDelete()

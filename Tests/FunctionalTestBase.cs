@@ -1,8 +1,8 @@
 ﻿using Rebilly;
 
-namespace Tests.Functional
+namespace Tests
 {
-    public class FunctionalTestBase
+    public class TestBase
     {
         protected Client CreateClient()
         {
