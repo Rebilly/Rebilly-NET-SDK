@@ -44,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Transaction.cs" />
+    <Compile Include="Signature.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="Core\GatewayAccountJsonCreationConverter.cs" />
     <Compile Include="Core\IRebillyClientContext.cs" />

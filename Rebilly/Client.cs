@@ -19,7 +19,13 @@ namespace Rebilly
         public RateLimitStatus RateLimit { get; private set; }
 
         public Stack<MiddlewareBase> Middleware { get; set; }
+
+        public Client(string apiUser, string apiKey, string baseUrl = null)
+        {
+
+        }
  
+
         public Client(string apiKey = null, string baseUrl = null)
         {
             if(apiKey == null)

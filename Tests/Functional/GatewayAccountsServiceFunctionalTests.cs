@@ -25,7 +25,7 @@ namespace Tests.Functional
             {
                 GatewayName = "A1Gateway",
                 GatewayConfig = new A1GatewayConfig() { MemberId = "123", Password = "123123", AccountId = "12312", AVS = 12, Delay = 1232 },
-                Method = "payment_card",
+                Method = "payment-card",
                 PaymentCardSchemes = new List<string>() { "Visa", "MasterCard"},
                 OrganizationId = NewOrganization.Id,
                 ThreeDSecure = false,
@@ -44,13 +44,13 @@ namespace Tests.Functional
             var CreatedGatewayAccount = GatewayAccounts.Create(NewGatewayAccount);
 
             Assert.IsNotEmpty(CreatedGatewayAccount.Id);
-            Assert.AreEqual(CreatedGatewayAccount.GatewayName, "A1Gateway");
-            Assert.AreEqual(((A1GatewayConfig)CreatedGatewayAccount.GatewayConfig).MemberId, "123");
-            Assert.AreEqual(((A1GatewayConfig)CreatedGatewayAccount.GatewayConfig).AccountId, "12312");
-            Assert.AreEqual(((A1GatewayConfig)CreatedGatewayAccount.GatewayConfig).Delay, 1232);
-            Assert.AreEqual(((A1GatewayConfig)CreatedGatewayAccount.GatewayConfig).AVS, 12);
+            Assert.AreEqual("A1Gateway", CreatedGatewayAccount.GatewayName);
+            Assert.AreEqual("123",((A1GatewayConfig)CreatedGatewayAccount.GatewayConfig).MemberId);
+            Assert.AreEqual("12312",((A1GatewayConfig)CreatedGatewayAccount.GatewayConfig).AccountId);
+            Assert.AreEqual(1232,((A1GatewayConfig)CreatedGatewayAccount.GatewayConfig).Delay);
+            Assert.AreEqual(12,((A1GatewayConfig)CreatedGatewayAccount.GatewayConfig).AVS);
 
-            Assert.AreEqual(CreatedGatewayAccount.Method, "payment_card");
+            Assert.AreEqual("payment-card", CreatedGatewayAccount.Method);
             Assert.AreEqual(CreatedGatewayAccount.PaymentCardSchemes[0], "Visa");
             Assert.AreEqual(CreatedGatewayAccount.PaymentCardSchemes[1], "MasterCard");
             Assert.AreEqual(CreatedGatewayAccount.OrganizationId, NewOrganization.Id);

@@ -32,6 +32,7 @@ namespace Tests.Examples
             }
             catch(RebillyException ex)
             {
+                Console.WriteLine("An error has occurred: " + ex.ToString());
                 Assert.Fail();
             }
         }

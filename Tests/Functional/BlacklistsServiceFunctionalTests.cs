@@ -24,13 +24,13 @@ namespace Tests.Functional
             // Create
             var NewBlacklist = CreateBlacklist(NewCustomer);
             Assert.IsNotNull(NewBlacklist.Id);
-            Assert.AreEqual(NewBlacklist.Type, "customerId");
+            Assert.AreEqual("customer-id", NewBlacklist.Type);
             Assert.Less(new DateTime(2016, 1, 1).Ticks, NewBlacklist.ExpireTime.Value.Ticks);
 
             // Load
             var LoadedBlacklist = BlacklistsService.Load(NewBlacklist.Id);
             Assert.IsNotNull(LoadedBlacklist.Id);
-            Assert.AreEqual(LoadedBlacklist.Type, "customerId");
+            Assert.AreEqual("customer-id", LoadedBlacklist.Type);
             Assert.Less(new DateTime(2016, 1, 1).Ticks, LoadedBlacklist.ExpireTime.Value.Ticks);
 
             // Search

@@ -13,7 +13,6 @@ namespace Rebilly.Entities
         public int Quantity { get; set; }
         public bool Autopay { get; set; }
         public string Status { get; set; }
-
         public string Plan { get; set; }
         public string Website { get; set; }
         public string BillingAddress { get; set; }

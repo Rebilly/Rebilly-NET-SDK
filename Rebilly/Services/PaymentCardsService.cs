@@ -7,5 +7,10 @@ namespace Rebilly.Services
     {
         public PaymentCardsService() : base() { }
         public PaymentCardsService(string dataProviderName) : base(dataProviderName) { }
+
+        protected override string GetMappedEntityName()
+        {
+            return "payment-cards";
+        }
     }
 }

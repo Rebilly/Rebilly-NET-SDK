@@ -115,8 +115,6 @@ namespace Rebilly.Core
         {
             using (var Client = CreateClient())
             {
-                // TODO: how todo syncronous request: http://stackoverflow.com/questions/14435520/why-use-httpclient-for-synchronous-connection
-
                 var Request = new HttpRequestMessage();
                 Request.RequestUri = new Uri((string)this["BaseUrl"] + relativeUrl);
                 Request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
