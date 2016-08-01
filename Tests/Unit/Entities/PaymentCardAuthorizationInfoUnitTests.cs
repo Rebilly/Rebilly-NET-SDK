@@ -18,7 +18,7 @@ namespace Tests.Unit.Entities
         public void TestCardIdDefaultIsEqualTo()
         {
             var CurrenPaymentCardAuthorizationInfo = new PaymentCardAuthorizationInfo();
-            Assert.IsNull(CurrenPaymentCardAuthorizationInfo);
+            Assert.IsNull(CurrenPaymentCardAuthorizationInfo.CardId);
         }
 
         [Test]
@@ -34,7 +34,7 @@ namespace Tests.Unit.Entities
         public void TestCurrencyDefaultIsEqualTo()
         {
             var CurrenPaymentCardAuthorizationInfo = new PaymentCardAuthorizationInfo();
-            Assert.IsNull(CurrenPaymentCardAuthorizationInfo);
+            Assert.IsNull(CurrenPaymentCardAuthorizationInfo.Currency);
         }   
 
         [Test]
@@ -50,7 +50,7 @@ namespace Tests.Unit.Entities
         public void TestWebsiteIdDefaultIsEqualTo()
         {
             var CurrenPaymentCardAuthorizationInfo = new PaymentCardAuthorizationInfo();
-            Assert.IsNull(CurrenPaymentCardAuthorizationInfo);
+            Assert.IsNull(CurrenPaymentCardAuthorizationInfo.WebsiteId);
         }
 
         [Test]
