@@ -21,27 +21,9 @@ namespace Tests.Functional
 
 
             // TODO: Create new GatewayAccount
-            var NewGatewayAccount = new GatewayAccount()
-            {
-                GatewayName = "A1Gateway",
-                GatewayConfig = new A1GatewayConfig() { MemberId = "123", Password = "123123", AccountId = "12312", AVS = 12, Delay = 1232 },
-                Method = "payment-card",
-                PaymentCardSchemes = new List<string>() { "Visa", "MasterCard"},
-                OrganizationId = NewOrganization.Id,
-                ThreeDSecure = false,
-                DynamicDescriptor = false,
-                MerchantCategoryCode =  5966,
-                AcquirerName = "CIM",
-                Descriptor = "MyDescriptor",
-                City = "MyCity",
-                Websites = new List<string>() { NewWebsite.Id},
-                AcceptedCurrencies = new List<string>(){"USD"}
-            };
 
-            var RebillyClient = CreateClient();
-            var GatewayAccounts = RebillyClient.GatewayAccounts();
-
-            var CreatedGatewayAccount = GatewayAccounts.Create(NewGatewayAccount);
+            var CreatedGatewayAccount = CreateGatewayAccount(NewOrganization, NewWebsite);
+           
 
             Assert.IsNotEmpty(CreatedGatewayAccount.Id);
             Assert.AreEqual("A1Gateway", CreatedGatewayAccount.GatewayName);
@@ -62,6 +44,9 @@ namespace Tests.Functional
             Assert.AreEqual(CreatedGatewayAccount.City, "MyCity");
             Assert.AreEqual(CreatedGatewayAccount.Websites[0], NewWebsite.Id);
             Assert.AreEqual(CreatedGatewayAccount.AcceptedCurrencies[0], "USD");
+
+            var RebillyClient = CreateClient();
+            var GatewayAccounts = RebillyClient.GatewayAccounts();
 
 
             // Update            
@@ -105,6 +90,32 @@ namespace Tests.Functional
             {
                 GatewayAccounts.Delete(item.Id);
             }
+        }
+
+
+        public GatewayAccount CreateGatewayAccount(Organization organization, Website website, string currency = "USD")
+        {
+            var NewGatewayAccount = new GatewayAccount()
+            {
+                GatewayName = "A1Gateway",
+                GatewayConfig = new A1GatewayConfig() { MemberId = "123", Password = "123123", AccountId = "12312", AVS = 12, Delay = 1232 },
+                Method = "payment-card",
+                PaymentCardSchemes = new List<string>() { "Visa", "MasterCard" },
+                OrganizationId = organization.Id,
+                ThreeDSecure = false,
+                DynamicDescriptor = false,
+                MerchantCategoryCode = 5966,
+                AcquirerName = "CIM",
+                Descriptor = "MyDescriptor",
+                City = "MyCity",
+                Websites = new List<string>() { website.Id },
+                AcceptedCurrencies = new List<string>() { currency }
+            };
+
+            var RebillyClient = CreateClient();
+            var GatewayAccounts = RebillyClient.GatewayAccounts();
+
+            return GatewayAccounts.Create(NewGatewayAccount);
         }
     }
 }

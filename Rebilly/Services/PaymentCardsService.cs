@@ -8,6 +8,17 @@ namespace Rebilly.Services
         public PaymentCardsService() : base() { }
         public PaymentCardsService(string dataProviderName) : base(dataProviderName) { }
 
+        public PaymentCard Authorize(PaymentCardAuthorizationInfo paymentCardAuthorization)
+        {
+            return Post<PaymentCardAuthorizationInfo>("/" + paymentCardAuthorization.CardId + "/authorization/", paymentCardAuthorization);
+        }
+
+        public PaymentCard Deactivate(string cardId)
+        {
+            return Post<PaymentCardAuthorizationInfo>("/" + cardId + "/deactivation/", new PaymentCardAuthorizationInfo());
+        }
+
+
         protected override string GetMappedEntityName()
         {
             return "payment-cards";

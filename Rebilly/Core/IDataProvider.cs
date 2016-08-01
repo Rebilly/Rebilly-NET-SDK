@@ -10,5 +10,7 @@ namespace Rebilly.Core
         TEntity Create(string path, TEntity entity);
         TEntity Update(string path, TEntity entity);
         void Delete(string path, TEntity entity);
+
+        TEntity Post<PostEntity>(string path, PostEntity entity);
     }
 }

@@ -91,6 +91,16 @@ namespace Rebilly.Core
         }
 
 
+        public TEntity Post<PostEntity>(string path, PostEntity entity)
+        {
+            BeforeAction();
+
+            string Path = GetMappedEntityName() + path;
+
+            return DataProvider.Post<PostEntity>(Path, entity);
+        }
+
+
         protected virtual void BeforeAction()
         {
             CopyPropertiesTo(DataProvider);

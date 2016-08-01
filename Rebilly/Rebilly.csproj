@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\PaymentCardAuthorizationInfo.cs" />
     <Compile Include="Entities\Transaction.cs" />
     <Compile Include="Signature.cs" />
     <Compile Include="Client.cs" />

@@ -33,5 +33,11 @@ namespace Rebilly.Core
         {
 
         }
+
+
+        public override TEntity Post<PostEntity>(string path, PostEntity entity)
+        {
+            return default(TEntity);
+        }
     }
 }

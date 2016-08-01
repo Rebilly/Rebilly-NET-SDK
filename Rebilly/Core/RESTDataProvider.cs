@@ -29,14 +29,8 @@ namespace Rebilly.Core
         {
             var RelativeUrl = CreateUrl(path, null);
 
-            var SerializerSettings = new JsonSerializerSettings
-            {
-                ContractResolver = new JsonSerializeCreatePropertiesResolver(),
-                DateFormatHandling = DateFormatHandling.IsoDateFormat,
-                DateFormatString = "yyyy-MM-dd hh:mm:ss",
-                NullValueHandling = NullValueHandling.Ignore
-
-            };
+            var SerializerSettings = GetSerializerSettings();
+            SerializerSettings.ContractResolver = new JsonSerializeCreatePropertiesResolver();
 
             // Create with a specific Id
             string OldId = string.Empty;
@@ -75,13 +69,8 @@ namespace Rebilly.Core
         {
             var RelativeUrl = CreateUrl(path + "/" + entity.Id + "/", null);
 
-            var SerializerSettings = new JsonSerializerSettings
-            {
-                ContractResolver = new JsonSerializeUpdatePropertiesResolver(),
-                DateFormatHandling = DateFormatHandling.IsoDateFormat,
-                DateFormatString = "yyyy-MM-dd hh:mm:ss",
-                NullValueHandling = NullValueHandling.Ignore
-            };
+            var SerializerSettings = GetSerializerSettings();
+            SerializerSettings.ContractResolver = new JsonSerializeUpdatePropertiesResolver();
 
             var SerializeText = JsonConvert.SerializeObject(entity, SerializerSettings);
 
@@ -97,6 +86,21 @@ namespace Rebilly.Core
             
             // This will throw an exception
             GetJsonText(RelativeUrl, HttpMethod.Delete, "");
+        }
+
+
+        public override TEntity Post<PostEntity>(string path, PostEntity entity)
+        {
+            var RelativeUrl = CreateUrl(path, null);
+
+            var SerializerSettings = GetSerializerSettings();
+            SerializerSettings.ContractResolver = new JsonSerializeUpdatePropertiesResolver();
+
+            var SerializeText = JsonConvert.SerializeObject(entity, SerializerSettings);
+
+            var ResponseText = GetJsonText(RelativeUrl, HttpMethod.Post, SerializeText);
+
+            return DeserializeObject(ResponseText);
         }
 
     
@@ -153,6 +157,18 @@ namespace Rebilly.Core
             {
                 middleware.OnResponse(request, response);
             }
+        }
+
+
+        private JsonSerializerSettings GetSerializerSettings()
+        {
+            return new JsonSerializerSettings
+            {
+                DateFormatHandling = DateFormatHandling.IsoDateFormat,
+                DateFormatString = "yyyy-MM-dd hh:mm:ss",
+                NullValueHandling = NullValueHandling.Ignore
+
+            };
         }
 
 

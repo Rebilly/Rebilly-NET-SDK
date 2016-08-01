@@ -51,6 +51,23 @@ namespace Tests.Unit.Entities
 
 
         [Test]
+        public void TestBinDefaultIsEqualTo()
+        {
+            var PaymentCard = new PaymentCard();
+            Assert.IsNull(PaymentCard.Bin);
+        }
+
+
+        [Test]
+        public void TestBinIsEqualTo()
+        {
+            var PaymentCard = new PaymentCard();
+            PaymentCard.Bin = "Bin1";
+            Assert.AreEqual("Bin1", PaymentCard.Bin);
+        }
+
+
+        [Test]
         public void TestPanDefaultIsEqualTo()
         {
             var PaymentCard = new PaymentCard();
@@ -183,6 +200,23 @@ namespace Tests.Unit.Entities
             var PaymentCard = new PaymentCard();
             PaymentCard.Customer = "Customer";
             Assert.AreEqual("Customer", PaymentCard.Customer);
+        }
+
+
+        [Test]
+        public void TestStatusDefaultIsEqualTo()
+        {
+            var PaymentCard = new PaymentCard();
+            Assert.IsNull(PaymentCard.Status);
+        }
+
+
+        [Test]
+        public void TestStatusIsEqualTo()
+        {
+            var PaymentCard = new PaymentCard();
+            PaymentCard.Status = "Status";
+            Assert.AreEqual("Status", PaymentCard.Status);
         }
     }
 }
