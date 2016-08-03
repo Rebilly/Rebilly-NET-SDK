@@ -8,6 +8,12 @@ namespace Rebilly.Services
         public PaymentCardTokensService() : base() { }
         public PaymentCardTokensService(string dataProviderName) : base(dataProviderName) { }
 
+
+        public PaymentCardToken Expire(string tokenId)
+        {
+            return Post<PaymentCardToken>("/" + tokenId + "/expiration/", new PaymentCardToken());
+        }
+
         protected override string GetMappedEntityName()
         {
             return "tokens";

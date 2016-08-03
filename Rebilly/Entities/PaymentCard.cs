@@ -7,8 +7,8 @@ namespace Rebilly.Entities
         public string CustomerId { get; set;}
         public string Bin { get; set; } 
         public string Pan { get; set;}
-        public string ExpYear { get; set;}
-        public string ExpMonth { get; set;}
+        public int ExpYear { get; set;}
+        public int ExpMonth { get; set;}
         public string Cvv { get; set;}
         public string BillingContactId { get; set;}
         public string Last4 { get; set; }

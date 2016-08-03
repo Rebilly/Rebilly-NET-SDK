@@ -88,7 +88,7 @@ namespace Tests.Unit.Entities
         public void TestExpYearDefaultIsEqualTo()
         {
             var PaymentCard = new PaymentCard();
-            Assert.IsNull(PaymentCard.ExpYear);
+            Assert.AreEqual(0,PaymentCard.ExpYear);
         }
 
 
@@ -96,8 +96,8 @@ namespace Tests.Unit.Entities
         public void TestExpYearIsEqualTo()
         {
             var PaymentCard = new PaymentCard();
-            PaymentCard.ExpYear = "ExpYear12";
-            Assert.AreEqual("ExpYear12", PaymentCard.ExpYear);
+            PaymentCard.ExpYear = 2017;
+            Assert.AreEqual(2017, PaymentCard.ExpYear);
         }
 
 
@@ -105,7 +105,7 @@ namespace Tests.Unit.Entities
         public void TestExpMonthDefaultIsEqualTo()
         {
             var PaymentCard = new PaymentCard();
-            Assert.IsNull(PaymentCard.ExpMonth);
+            Assert.AreEqual(0, PaymentCard.ExpMonth);
         }
 
 
@@ -113,8 +113,8 @@ namespace Tests.Unit.Entities
         public void TestExpMonthIsEqualTo()
         {
             var PaymentCard = new PaymentCard();
-            PaymentCard.ExpMonth = "ExpMonth123";
-            Assert.AreEqual("ExpMonth123", PaymentCard.ExpMonth);
+            PaymentCard.ExpMonth = 2;
+            Assert.AreEqual(2, PaymentCard.ExpMonth);
         }
 
 

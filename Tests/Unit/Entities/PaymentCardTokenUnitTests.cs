@@ -62,8 +62,11 @@ namespace Tests.Unit.Entities
         public void TestPaymentInstrumentIsEqualTo()
         {
             var PaymentCardToken = new PaymentCardToken();
-            PaymentCardToken.PaymentInstrument = "PaymentInstrument1";
-            Assert.AreEqual("PaymentInstrument1", PaymentCardToken.PaymentInstrument);
+
+            var NewPaymentInstrument = new PaymentInstrument();
+            PaymentCardToken.PaymentInstrument = NewPaymentInstrument;
+
+            Assert.AreEqual(NewPaymentInstrument, PaymentCardToken.PaymentInstrument);
         }
 
 
