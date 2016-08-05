@@ -112,10 +112,7 @@
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent Condition="'$(OS)' != 'Unix'">IF EXIST "$(ProjectDir)ApiKey.txt" xcopy "$(ProjectDir)ApiKey.txt" "$(ProjectDir)$(OutDir)" /Y</PostBuildEvent>
-  </PropertyGroup>
-  <PropertyGroup>
-    <PostBuildEvent>IF EXIST "$(ProjectDir)ApiSettings.txt" xcopy "$(ProjectDir)ApiSettings.txt" "$(ProjectDir)$(OutDir)" /Y</PostBuildEvent>
+    <PostBuildEvent Condition="'$(OS)' != 'Unix'">IF EXIST "$(ProjectDir)ApiSettings.txt" xcopy "$(ProjectDir)ApiSettings.txt" "$(ProjectDir)$(OutDir)" /Y</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
