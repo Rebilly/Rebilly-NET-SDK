@@ -7,34 +7,56 @@ namespace Tests
 {
     public class TestConfig
     {
-        public string RebillyApiKey { get; set; }
+        public string ApiKey { get; set; }
+        public string ApiUser { get; set; }
+
 
         public TestConfig()
         {
-            LoadApiKeyFromEnvironmentOrApiKeyFile();
+            LoadFromEnvironmentOrFile();
         }
 
 
-        public void LoadApiKeyFromEnvironmentOrApiKeyFile()
+        public void LoadFromEnvironmentOrFile()
         {
-            string EnvironmentRebillyApiKey = Environment.GetEnvironmentVariable("RebillyAPIKey");
-            if(!string.IsNullOrEmpty(EnvironmentRebillyApiKey))
+            string EnvironmentApiKey = Environment.GetEnvironmentVariable("ApiKey");
+            string EnvironmentApiUser = Environment.GetEnvironmentVariable("ApiUser");
+
+            if (!string.IsNullOrEmpty(EnvironmentApiKey) && !string.IsNullOrEmpty(EnvironmentApiUser))
             {
-                RebillyApiKey = EnvironmentRebillyApiKey;
+                ApiKey = EnvironmentApiKey;
+                ApiUser = EnvironmentApiUser;
             }
             else
             {
-                string ApiKeyFile = TestContext.CurrentContext.TestDirectory + Path.DirectorySeparatorChar + "ApiKey.txt";
+                string ApiSettingsFile = TestContext.CurrentContext.TestDirectory + Path.DirectorySeparatorChar + "ApiSettings.txt";
 
-                if(File.Exists(ApiKeyFile))
-                {
-                    RebillyApiKey = File.ReadAllText(ApiKeyFile).Trim();
+                if (File.Exists(ApiSettingsFile))
+                {                    
+                    using(var FileStream = File.OpenRead(ApiSettingsFile))
+                    using (var Stream = new StreamReader(FileStream))
+                    {
+                        if (!Stream.EndOfStream)
+                        {
+                            ApiKey = Stream.ReadLine();
+                        }
+
+                        if (!Stream.EndOfStream)
+                        {
+                            ApiUser = Stream.ReadLine();
+                        }
+                    }
                 }
             }
 
-            if(string.IsNullOrEmpty(RebillyApiKey))
+            if (string.IsNullOrEmpty(ApiKey))
             {
                 throw new Exception("Cannot find ApiKey");
+            }
+
+            if (string.IsNullOrEmpty(ApiUser))
+            {
+                throw new Exception("Cannot find ApiUser");
             }
         }
 

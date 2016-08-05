@@ -8,6 +8,6 @@ namespace Rebilly.Core
         object this[string key] { get; set; }
         bool ContainsKey(string key);
         void CopyPropertiesTo(IProviderBase targetBag);
-        Stack<MiddlewareBase> Middleware { get; set; }
+        List<MiddlewareBase> Middleware { get; set; }
     }
 }

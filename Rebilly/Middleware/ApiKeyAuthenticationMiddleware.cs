@@ -4,11 +4,11 @@ using Rebilly.Core;
 
 namespace Rebilly.Middleware
 {
-    public class AuthenticatorMiddleware :  MiddlewareBase
+    public class ApiKeyAuthenticationMiddleware :  MiddlewareBase
     {
         public string ApiKey { get;  internal set; }
-
-        public AuthenticatorMiddleware(IRebillyClientContext clientContext)
+ 
+        public ApiKeyAuthenticationMiddleware(IRebillyClientContext clientContext)
             : base(clientContext)
         {
 
@@ -17,6 +17,11 @@ namespace Rebilly.Middleware
         public override void OnRequest(HttpRequestMessage request)
         {
             base.OnRequest(request);
+
+            if(string.IsNullOrEmpty(ApiKey))
+            {
+                throw new RebillyException("ApiKey cannot be empty");
+            }
 
             request.Headers.Add("REB-APIKEY", ApiKey);
         }

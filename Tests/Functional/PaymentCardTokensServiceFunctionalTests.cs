@@ -6,6 +6,7 @@ using NUnit.Framework;
 using Rebilly;
 using Rebilly.Core;
 using Rebilly.Entities;
+using Rebilly.Middleware;
 
 namespace Tests.Functional
 {
@@ -15,8 +16,6 @@ namespace Tests.Functional
         [Test]
         public void TestCreateLoadListExpireTokens()
         {
-            // TODO: should make a seperate response for this one!!!
-
             // Create
             var CustomersTests = new CustomersServiceFunctionalTests();
             var NewCustomer = CustomersTests.CreateCustomer();
@@ -47,7 +46,40 @@ namespace Tests.Functional
         }
 
 
-        public PaymentCardToken CreateCreditCardPaymentCardToken(Customer customer, Contact contact, PaymentCard paymentCard)
+        [Test]
+        public void TestCreateLoadListExpireTokensWithRebillySignature()
+        {
+            // Create
+            var CustomersTests = new CustomersServiceFunctionalTests();
+            var NewCustomer = CustomersTests.CreateCustomer();
+
+            var OrganizationsTests = new OrganizationsServiceFunctionalTests();
+            var NewOrganization = OrganizationsTests.CreateOrganization();
+
+            var ContactsTests = new ContactsServiceFunctionalTests();
+            var Contact = ContactsTests.CreateContact(NewCustomer, NewOrganization);
+
+
+            var PaymentCardsTests = new PaymentCardsServiceFunctionalTests();
+            var NewPaymentCard = PaymentCardsTests.CreatePaymentCard(NewCustomer, Contact);
+
+            var NewPaymentCardToken = CreateCreditCardPaymentCardToken(NewCustomer, Contact, NewPaymentCard, useRebillySignagure: true);
+            Assert.IsNotNull(NewPaymentCardToken.Id);
+
+            // Load
+            var PaymentCardTokensService = CreateClient().PaymentCardTokens();
+            var LoadedPaymentCardToken = PaymentCardTokensService.Load(NewPaymentCardToken.Id);
+            Assert.AreEqual(NewPaymentCardToken.Id, LoadedPaymentCardToken.Id);
+
+
+            // Expire
+            var ExpiredResponse = PaymentCardTokensService.Expire(NewPaymentCardToken.Id);
+            Assert.IsNotNull(ExpiredResponse.Id);
+
+        }
+
+
+        public PaymentCardToken CreateCreditCardPaymentCardToken(Customer customer, Contact contact, PaymentCard paymentCard, bool useRebillySignagure = false)
         {
             var NewPaymentCardToken = new PaymentCardToken();
             NewPaymentCardToken.Method = "payment-card";
@@ -66,6 +98,7 @@ namespace Tests.Functional
          
 
             var PaymentCardTokensService = CreateClient().PaymentCardTokens();
+
             return PaymentCardTokensService.Create(NewPaymentCardToken);
         }
     }

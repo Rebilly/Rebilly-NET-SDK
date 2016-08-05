@@ -4,7 +4,7 @@ using Rebilly;
 namespace Tests
 {
     [TestFixture]
-    public class RebillySignatureUnitTests
+    public class SignatureUnitTests
     {
         [Test]
         public void TestConstructIsNotNull()
@@ -28,7 +28,6 @@ namespace Tests
         {
             var CurrentSignature = new Signature();
             var Signature = CurrentSignature.Generate("12123", "XDB1234OFCEXq9UhwL7wDD6TestUL3vBfs55555");
-
             Assert.IsNotEmpty(Signature);
         }
     }

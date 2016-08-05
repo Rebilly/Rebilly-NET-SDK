@@ -62,7 +62,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Unit\Entities\PaymentCardAuthorizationInfoUnitTests.cs" />
     <Compile Include="Unit\Entities\PaymentInstrumentUnitTests.cs" />
-    <Compile Include="Unit\RebillySignatureUnitTests.cs" />
+    <Compile Include="Unit\SignatureUnitTests.cs" />
     <Compile Include="TestConfig.cs" />
     <Compile Include="Unit\Core\ClientExceptionUnitTests.cs" />
     <Compile Include="Unit\Entities\BankAccountUnitTests.cs" />
@@ -113,6 +113,9 @@
   </Target>
   <PropertyGroup>
     <PostBuildEvent Condition="'$(OS)' != 'Unix'">IF EXIST "$(ProjectDir)ApiKey.txt" xcopy "$(ProjectDir)ApiKey.txt" "$(ProjectDir)$(OutDir)" /Y</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>IF EXIST "$(ProjectDir)ApiSettings.txt" xcopy "$(ProjectDir)ApiSettings.txt" "$(ProjectDir)$(OutDir)" /Y</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

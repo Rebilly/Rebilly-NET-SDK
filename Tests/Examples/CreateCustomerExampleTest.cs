@@ -16,7 +16,7 @@ namespace Tests.Examples
         public void CreateCustomer()
         {
             var Config = new TestConfig();
-            var RebillyClient = new Client(apiKey: Config.RebillyApiKey, baseUrl: Client.SandboxHost);
+            var RebillyClient = new Client(apiKey: Config.ApiKey, baseUrl: Client.SandboxHost);
             
             var CreateCustomer = new Customer()
             {

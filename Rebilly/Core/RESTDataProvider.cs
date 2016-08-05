@@ -83,8 +83,7 @@ namespace Rebilly.Core
         public override void Delete(string path, TEntity entity)
         {
             var RelativeUrl = CreateUrl(path + "/" + entity.Id + "/", null);
-            
-            // This will throw an exception
+
             GetJsonText(RelativeUrl, HttpMethod.Delete, "");
         }
 

@@ -18,7 +18,7 @@ namespace Rebilly
 
         public RateLimitStatus RateLimit { get; private set; }
 
-        public Stack<MiddlewareBase> Middleware { get; set; }
+        public List<MiddlewareBase> Middleware { get; set; }
 
         public Client(string apiUser, string apiKey, string baseUrl = null)
         {
@@ -168,9 +168,9 @@ namespace Rebilly
         {
             RateLimit = new RateLimitStatus();
 
-            Middleware = new Stack<MiddlewareBase>();
-            Middleware.Push(new AuthenticatorMiddleware(this) { ApiKey = ApiKey });
-            Middleware.Push(new RateLimitStatusMiddleware(this));
+            Middleware = new List<MiddlewareBase>();
+            Middleware.Add(new ApiKeyAuthenticationMiddleware(this) { ApiKey = ApiKey });
+            Middleware.Add(new RateLimitStatusMiddleware(this));
         }
     }
 }

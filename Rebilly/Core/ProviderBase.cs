@@ -6,11 +6,11 @@ namespace Rebilly.Core
     public class ProviderBase
     {
         private Dictionary<string, object> _Properties = new Dictionary<string, object>();
-        public Stack<MiddlewareBase> Middleware { get; set; }
+        public List<MiddlewareBase> Middleware { get; set; }
 
         public ProviderBase()
         {
-            Middleware = new Stack<MiddlewareBase>(); 
+            Middleware = new List<MiddlewareBase>(); 
         }
 
         public object this[string key]

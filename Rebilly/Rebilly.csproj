@@ -47,6 +47,7 @@
     <Compile Include="Entities\PaymentCardAuthorizationInfo.cs" />
     <Compile Include="Entities\PaymentInstrument.cs" />
     <Compile Include="Entities\Transaction.cs" />
+    <Compile Include="Middleware\SignatureAuthenticationMiddleware.cs" />
     <Compile Include="Signature.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="Core\GatewayAccountJsonCreationConverter.cs" />
@@ -74,7 +75,7 @@
     <Compile Include="Entities\Plan.cs" />
     <Compile Include="Entities\Subscription.cs" />
     <Compile Include="Entities\PaymentCardToken.cs" />
-    <Compile Include="Middleware\AuthenticatorMiddleware.cs" />
+    <Compile Include="Middleware\ApiKeyAuthenticationMiddleware.cs" />
     <Compile Include="Middleware\RateLimitStatusMiddleware.cs" />
     <Compile Include="Middleware\ResponseLoggerMiddlware.cs" />
     <Compile Include="Core\MiddlewareBase.cs" />
