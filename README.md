@@ -71,6 +71,18 @@ Create a Customer
   }
 ```
 
+Creating a signature on the server, which can be used for client-side authentication
+```csharp
+  using Rebilly;
+  
+  var ApiUser = "[Your API User]";
+  var ApiKey = "[Your API Key]";
+  
+  var NewSignature = new Signature();
+  var SignatureText = NewSignature.Generate(ApiUser, ApiKey);
+
+```
+
 ## Documentation
 
 Read [https://www.rebilly.com/api/documentation/](https://www.rebilly.com/api/documentation/) for more details.
