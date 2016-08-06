@@ -51,7 +51,7 @@ var RebillyClient = new Client(apiKey: "YOUR API Key", baseUrl: Client.SandboxHo
 Create a Customer
 
 ```csharp
-  var RebillyClient = new Client(apiKey: "YOUR API KEY", baseUrl: Client.SandboxHost);
+  var RebillyClient = new Client(apiKey: "YOUR API Key", baseUrl: Client.SandboxHost);
   
   var CreateCustomer = new Customer()
   {
@@ -75,11 +75,8 @@ Creating a signature on the server, which can be used for client-side authentica
 ```csharp
   using Rebilly;
   
-  var ApiUser = "[Your API User]";
-  var ApiKey = "[Your API Key]";
-  
   var NewSignature = new Signature();
-  var SignatureText = NewSignature.Generate(ApiUser, ApiKey);
+  var SignatureText = NewSignature.Generate("[Your API User]", "[Your API Key]");
 
 ```
 
