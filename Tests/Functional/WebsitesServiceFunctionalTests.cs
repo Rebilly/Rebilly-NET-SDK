@@ -68,11 +68,6 @@ namespace Tests.Functional
             DeleteWebsite(NewSite1);
             DeleteWebsite(NewSite2);
 
-            var ItemsToDelete = RebillyClient.Websites().Search();
-            foreach(var item in ItemsToDelete )
-            {
-                RebillyClient.Websites().Delete(item.Id);
-            }
 
             // Test Not found exception
             try
