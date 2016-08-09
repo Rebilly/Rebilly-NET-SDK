@@ -53,6 +53,7 @@
     <Compile Include="Functional\LeadSourcesServiceFunctionalTests.cs" />
     <Compile Include="Functional\NotesServiceFunctionalTests.cs" />
     <Compile Include="Functional\OrganizationsServiceFunctionalTests.cs" />
+    <Compile Include="Functional\InvoicesServiceFunctionalTests.cs" />
     <Compile Include="Functional\PaymentCardsServiceFunctionalTests.cs" />
     <Compile Include="Functional\PaymentCardTokensServiceFunctionalTests.cs" />
     <Compile Include="Functional\PlansServiceFunctionalTests.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Functional\WebsitesServiceFunctionalTests.cs" />
     <Compile Include="Integration\SearchArgumentsConverterIntegrationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Unit\Entities\InvoiceUnitTests.cs" />
     <Compile Include="Unit\Entities\PaymentCardAuthorizationInfoUnitTests.cs" />
     <Compile Include="Unit\Entities\PaymentInstrumentUnitTests.cs" />
     <Compile Include="Unit\SignatureUnitTests.cs" />

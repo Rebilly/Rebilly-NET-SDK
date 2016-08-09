@@ -44,10 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Invoice.cs" />
     <Compile Include="Entities\PaymentCardAuthorizationInfo.cs" />
     <Compile Include="Entities\PaymentInstrument.cs" />
     <Compile Include="Entities\Transaction.cs" />
     <Compile Include="Middleware\SignatureAuthenticationMiddleware.cs" />
+    <Compile Include="Services\InvoicesService.cs" />
     <Compile Include="Signature.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="Core\GatewayAccountJsonCreationConverter.cs" />
