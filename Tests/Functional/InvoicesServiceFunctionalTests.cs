@@ -13,7 +13,7 @@ namespace Tests.Functional
     public class InvoicesServiceFunctionalTests : TestBase
     {
         [Test]
-        public void TestCreateLoad()
+        public void TestCreateLoadIssueAbandonvVoid()
         {
             // Create
             var CustomersTests = new CustomersServiceFunctionalTests();
@@ -33,6 +33,8 @@ namespace Tests.Functional
             Assert.IsNotNull(NewInvoice.Id);
             Assert.AreEqual(NewCustomer.Id, NewInvoice.CustomerId);
             Assert.AreEqual(NewContact.Id, NewInvoice.BillingContactId);
+            Assert.AreEqual("AUD", NewInvoice.Currency);
+            Assert.AreEqual(0, NewInvoice.Amount);
             
             var InvoicesService = CreateClient().Invoices();
 
@@ -51,6 +53,29 @@ namespace Tests.Functional
             var CreatedInvoice2 = CreateInvoice(NewWebsite, NewCustomer, NewContact, SpecificInvoiceId);
             Assert.AreEqual(SpecificInvoiceId, CreatedInvoice2.Id);
             Assert.AreEqual(NewCustomer.Id, CreatedInvoice2.CustomerId);
+            Assert.AreEqual("AUD", NewInvoice.Currency);
+            Assert.AreEqual(0, NewInvoice.Amount); // TODO: QUESTION for rebily team. Duetime must be set. 
+
+            // Issue
+            //NewInvoice.IssuedTime = DateTime.UtcNow;
+            //NewInvoice.DueTime = DateTime.UtcNow;
+            //var IssuedInvoice = InvoicesService.Issue(NewInvoice); 
+
+
+            // Abandon
+            var AbandonedInvoice = InvoicesService.Abandon(CreatedInvoice2.Id);
+            Assert.AreEqual(CreatedInvoice2.Id, AbandonedInvoice.Id);
+            Assert.IsNotNull(AbandonedInvoice.AbandonedTime);
+
+            // Void
+            //var VoidedInvoice = InvoicesService.Void(CreatedInvoice2.Id);
+            //Assert.AreEqual(CreatedInvoice2.Id, VoidedInvoice.Id);
+            //Assert.IsNotNull(VoidedInvoice.VoidedTime);  // TODO: QUESTION for rebily team. This is returning exprssion : NOW();        
+
+            //var VoidedInvoice = InvoicesService.(CreatedInvoice2.Id);
+            //Assert.AreEqual(CreatedInvoice2.Id, VoidedInvoice.Id);
+            
+        
         }
 
 
@@ -65,7 +90,7 @@ namespace Tests.Functional
             NewInvoice.WebsiteId = website.Id;
             NewInvoice.CustomerId = customer.Id;
             NewInvoice.BillingContactId = contact.Id;
-            NewInvoice.Currency = "aud";
+            NewInvoice.Currency = "AUD";
 
             var InvoicesService = CreateClient().Invoices();
             return InvoicesService.Create(NewInvoice);

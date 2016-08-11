@@ -48,6 +48,7 @@
     <Compile Include="Entities\PaymentCardAuthorizationInfo.cs" />
     <Compile Include="Entities\PaymentInstrument.cs" />
     <Compile Include="Entities\Transaction.cs" />
+    <Compile Include="Middleware\RequestLoggerMiddleware.cs" />
     <Compile Include="Middleware\SignatureAuthenticationMiddleware.cs" />
     <Compile Include="Services\InvoicesService.cs" />
     <Compile Include="Signature.cs" />
