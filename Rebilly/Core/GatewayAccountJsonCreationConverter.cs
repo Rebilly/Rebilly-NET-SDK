@@ -24,7 +24,7 @@ namespace Rebilly.Core
 
             var Destination = new GatewayAccount();
 
-            if (LoadedObject["gatewayName"].ToString() == "A1Gateway")
+            if (LoadedObject["gatewayName"].ToString() == "A1Gateway" || LoadedObject["gatewayName"].ToString() == "A1 Gateway")
             {
                 Destination.GatewayConfig = new A1GatewayConfig();
             }

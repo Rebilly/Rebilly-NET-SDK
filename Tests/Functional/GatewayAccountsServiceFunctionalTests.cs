@@ -26,7 +26,7 @@ namespace Tests.Functional
            
 
             Assert.IsNotEmpty(CreatedGatewayAccount.Id);
-            Assert.AreEqual("A1Gateway", CreatedGatewayAccount.GatewayName);
+            Assert.AreEqual("A1 Gateway", CreatedGatewayAccount.GatewayName);
             Assert.AreEqual("123",((A1GatewayConfig)CreatedGatewayAccount.GatewayConfig).MemberId);
             Assert.AreEqual("12312",((A1GatewayConfig)CreatedGatewayAccount.GatewayConfig).AccountId);
             Assert.AreEqual(1232,((A1GatewayConfig)CreatedGatewayAccount.GatewayConfig).Delay);
@@ -70,7 +70,7 @@ namespace Tests.Functional
             // Load
             var LoadedGateway = GatewayAccounts.Load(UpdatedGatewayAccount.Id);
             Assert.IsNotEmpty(LoadedGateway.Id);
-            Assert.AreEqual(LoadedGateway.GatewayName, "A1Gateway");
+            Assert.AreEqual(LoadedGateway.GatewayName, "A1 Gateway");
 
             // Search
             var SearchGateways = GatewayAccounts.Search();

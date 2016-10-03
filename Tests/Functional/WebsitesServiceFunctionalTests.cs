@@ -27,7 +27,7 @@ namespace Tests.Functional
 
             // Update
             CreatedWebsite.Name = "TestWebsites-" + Guid.NewGuid().ToString();
-            CreatedWebsite.Url = "mywebsite.com";
+            CreatedWebsite.Url = "google.com";
             CreatedWebsite.ServicePhone = "+12345678910";
             CreatedWebsite.ServiceEmail = "support2@gmail.com";
             CreatedWebsite.CheckoutPageUri = "checkout2";
@@ -139,7 +139,7 @@ System.Diagnostics.Debug.WriteLine((Count++).ToString() + " - Paging WebSite nam
             var NewWebsite = new Website()
             {
                 Name = "TestWebsites-" + Guid.NewGuid().ToString(),
-                Url = "mywebsite.com",
+                Url = "google.com",
                 ServicePhone = "+123456789",
                 ServiceEmail = "support@gmail.com",
                 CheckoutPageUri = "checkout",

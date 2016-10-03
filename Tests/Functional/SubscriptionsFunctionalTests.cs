@@ -15,8 +15,6 @@ namespace Tests.Functional
         [Test]
         public void TestCreateUpdateLoadDelete()
         {
-            // TODO: need to implement PaymentCards service first
-            /*
             var CustomersTests = new CustomersServiceFunctionalTests();
             var NewCustomer = CustomersTests.CreateCustomer();
 
@@ -25,7 +23,18 @@ namespace Tests.Functional
 
             var WebsitesTests = new WebsitesServiceFunctionalTests();
             var NewWebsite = WebsitesTests.CreateWebsite();
-            */
+
+            var PaymentCard = new PaymentCardsServiceFunctionalTests();
+
+            
+            var OrganizationsServiceFunctional = new OrganizationsServiceFunctionalTests();
+            var NewOrganization = OrganizationsServiceFunctional.CreateOrganization();
+
+            var ContactsServiceTest = new ContactsServiceFunctionalTests();
+            var NewContact = ContactsServiceTest.CreateContact(NewCustomer, NewOrganization);
+
+            var NewPaymentCard = PaymentCard.CreatePaymentCard(NewCustomer, NewContact);
+
 
             //var NewSubscription = CreateSubscription(NewCustomer, NewPlan, NewWebsite);
 

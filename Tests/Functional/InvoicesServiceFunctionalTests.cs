@@ -13,7 +13,7 @@ namespace Tests.Functional
     public class InvoicesServiceFunctionalTests : TestBase
     {
         [Test]
-        public void TestCreateLoadIssueAbandonvVoid()
+        public void TestCreateLoadIssueAbandonVoid()
         {
             // Create
             var CustomersTests = new CustomersServiceFunctionalTests();
@@ -93,6 +93,10 @@ namespace Tests.Functional
             NewInvoice.Currency = "AUD";
 
             var InvoicesService = CreateClient().Invoices();
+
+            InvoicesService.Middleware.Add(new Rebilly.Middleware.ResponseLoggerMiddlware(null));
+
+
             return InvoicesService.Create(NewInvoice);
         }
     }

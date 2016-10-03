@@ -15,7 +15,7 @@ namespace Tests.Functional
         [Test]
         public void TestCreateUpdateLoadSearchDelete()
         {
-            // Create
+            // Create       
             var NewCustomer = CreateCustomer();
             Assert.IsNotEmpty(NewCustomer.Id);
             Assert.AreEqual("Bill", NewCustomer.FirstName);
