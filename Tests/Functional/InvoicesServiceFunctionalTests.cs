@@ -37,6 +37,7 @@ namespace Tests.Functional
             Assert.AreEqual(0, NewInvoice.Amount);
             
             var InvoicesService = CreateClient().Invoices();
+            InvoicesService.Middleware.Add(new Rebilly.Middleware.AnalyzerMiddlware(null));
 
             
             // Load
@@ -68,9 +69,9 @@ namespace Tests.Functional
             Assert.IsNotNull(AbandonedInvoice.AbandonedTime);
 
             // Void
-            //var VoidedInvoice = InvoicesService.Void(CreatedInvoice2.Id);
-            //Assert.AreEqual(CreatedInvoice2.Id, VoidedInvoice.Id);
-            //Assert.IsNotNull(VoidedInvoice.VoidedTime);  // TODO: QUESTION for rebily team. This is returning exprssion : NOW();        
+            var VoidedInvoice = InvoicesService.Void(CreatedInvoice2.Id);
+            Assert.AreEqual(CreatedInvoice2.Id, VoidedInvoice.Id);
+            Assert.IsNotNull(VoidedInvoice.VoidedTime);  // TODO: QUESTION for rebily team. This is returning expression : NOW();        
 
             //var VoidedInvoice = InvoicesService.(CreatedInvoice2.Id);
             //Assert.AreEqual(CreatedInvoice2.Id, VoidedInvoice.Id);
@@ -93,10 +94,9 @@ namespace Tests.Functional
             NewInvoice.Currency = "AUD";
 
             var InvoicesService = CreateClient().Invoices();
+            InvoicesService.Middleware.Add(new Rebilly.Middleware.AnalyzerMiddlware(null));
 
-            InvoicesService.Middleware.Add(new Rebilly.Middleware.ResponseLoggerMiddlware(null));
-
-
+ 
             return InvoicesService.Create(NewInvoice);
         }
     }

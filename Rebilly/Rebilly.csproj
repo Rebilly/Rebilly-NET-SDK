@@ -48,7 +48,6 @@
     <Compile Include="Entities\PaymentCardAuthorizationInfo.cs" />
     <Compile Include="Entities\PaymentInstrument.cs" />
     <Compile Include="Entities\Transaction.cs" />
-    <Compile Include="Middleware\RequestLoggerMiddleware.cs" />
     <Compile Include="Middleware\SignatureAuthenticationMiddleware.cs" />
     <Compile Include="Services\InvoicesService.cs" />
     <Compile Include="Signature.cs" />
@@ -80,7 +79,7 @@
     <Compile Include="Entities\PaymentCardToken.cs" />
     <Compile Include="Middleware\ApiKeyAuthenticationMiddleware.cs" />
     <Compile Include="Middleware\RateLimitStatusMiddleware.cs" />
-    <Compile Include="Middleware\ResponseLoggerMiddlware.cs" />
+    <Compile Include="Middleware\AnalyzerMiddlware.cs" />
     <Compile Include="Core\MiddlewareBase.cs" />
     <Compile Include="Core\DataProvider.cs" />
     <Compile Include="Core\DataProviderFactory.cs" />

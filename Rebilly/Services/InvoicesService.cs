@@ -10,12 +10,12 @@ namespace Rebilly.Services
 
         public Invoice Abandon(string invoiceId)
         {
-            return Post<Invoice>("/" + invoiceId + "/abandon/",new Invoice());
+            return Post<Invoice>("/" + invoiceId + "/abandon/",null);
         }
 
         public Invoice Void(string invoiceId)
         {
-            return Post<Invoice>("/" + invoiceId + "/void/", new Invoice());
+            return Post<Invoice>("/" + invoiceId + "/void/", null);
         }
 
         public Invoice Issue(Invoice invoice)

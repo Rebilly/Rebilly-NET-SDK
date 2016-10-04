@@ -95,8 +95,12 @@ namespace Rebilly.Core
             var SerializerSettings = GetSerializerSettings();
             SerializerSettings.ContractResolver = new JsonSerializeUpdatePropertiesResolver();
 
-            var SerializeText = JsonConvert.SerializeObject(entity, SerializerSettings);
-
+            string SerializeText = "{}";
+            if(entity != null)
+            {
+                SerializeText = JsonConvert.SerializeObject(entity, SerializerSettings);
+            }
+                
             var ResponseText = GetJsonText(RelativeUrl, HttpMethod.Post, SerializeText);
 
             return DeserializeObject(ResponseText);
@@ -123,12 +127,12 @@ namespace Rebilly.Core
                 Request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 Request.Method = method;
  
-                ApplyMiddlewareToRequest(Request);
- 
                 if (!string.IsNullOrEmpty(content))
                 {
                     Request.Content = new StringContent(content);
                 }
+
+                ApplyMiddlewareToRequest(Request);
 
                 var Response = Client.SendAsync(Request).Result;
 
