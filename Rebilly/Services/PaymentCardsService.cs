@@ -15,7 +15,7 @@ namespace Rebilly.Services
 
         public PaymentCard Deactivate(string cardId)
         {
-            return Post<PaymentCardAuthorizationInfo>("/" + cardId + "/deactivation/", new PaymentCardAuthorizationInfo());
+            return Post<PaymentCardAuthorizationInfo>("/" + cardId + "/deactivation/", null);
         }
 
         protected override string GetMappedEntityName()
