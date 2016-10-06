@@ -132,6 +132,13 @@ namespace Rebilly
             return GetService<InvoicesService>();
         }
 
+
+        public ThreeDSecuresService ThreeDSecures()
+        {
+            return GetService<ThreeDSecuresService>();
+        }
+
+
         public TService GetService<TService>() where TService : ProviderBase, IService, new()
         {
             var Factory = new ServiceFactory();
