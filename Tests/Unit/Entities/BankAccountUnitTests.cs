@@ -71,16 +71,16 @@ namespace Tests.Unit.Entities
         public void TestNameDefaultIsEqualTo()
         {
             var BankAccount = new BankAccount();
-            Assert.IsNull(BankAccount.Name);
+            Assert.IsNull(BankAccount.BankName);
         }
 
 
         [Test]
-        public void TestNameIsEqualTo()
+        public void TestBankNameIsEqualTo()
         {
             var BankAccount = new BankAccount();
-            BankAccount.Name = "!@Name";
-            Assert.AreEqual("!@Name", BankAccount.Name);
+            BankAccount.BankName = "!@Name";
+            Assert.AreEqual("!@Name", BankAccount.BankName);
         }
 
 
@@ -132,6 +132,23 @@ namespace Tests.Unit.Entities
             var BankAccount = new BankAccount();
             BankAccount.AccountNumber = "!@AccountNumber";
             Assert.AreEqual("!@AccountNumber", BankAccount.AccountNumber);
-        }    
+        }
+
+
+        [Test]
+        public void TestStatusDefaultIsEqualTo()
+        {
+            var BankAccount = new BankAccount();
+            Assert.IsNull(BankAccount.Status);
+        }
+
+
+        [Test]
+        public void TestStatusIsEqualTo()
+        {
+            var BankAccount = new BankAccount();
+            BankAccount.Status = "active";
+            Assert.AreEqual("active", BankAccount.Status);
+        }
     }
 }

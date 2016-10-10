@@ -6,9 +6,11 @@ namespace Rebilly.Entities
     {
         public string CustomerId { get ; set;}
         public string ContactId { get ; set;}
-        public string Name { get ; set;}
+        public string BankName { get ; set;}
         public string AccountType { get ; set;}
         public string RoutingNumber { get ; set;}
         public string AccountNumber { get ; set;}
+        public string Status { get; set; }
+
     }
 }

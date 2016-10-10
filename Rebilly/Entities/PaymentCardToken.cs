@@ -6,7 +6,7 @@ namespace Rebilly.Entities
     public class PaymentCardToken : Entity
     {
         public string Method { get; set;}
-        public PaymentInstrument PaymentInstrument { get; set; }
+        public PaymentTokenInstrument PaymentInstrument { get; set; }
         public string FirstName { get; set;}
         public string LastName { get; set;}
         public string Address { get; set;}

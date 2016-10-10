@@ -84,7 +84,7 @@ namespace Tests.Functional
             var NewPaymentCardToken = new PaymentCardToken();
             NewPaymentCardToken.Method = "payment-card";
 
-            var NewPaymentInstrument = new PaymentInstrument()
+            var NewPaymentInstrument = new PaymentTokenInstrument()
             {
                 Pan = "4111111111111111",   // PaymentCardsServiceFunctionalTests.CreatePaymentCard always create a card with a Pan of 4111111111111111
                 ExpMonth = paymentCard.ExpMonth,

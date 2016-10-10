@@ -25,6 +25,8 @@ namespace Tests.Functional
             var ContactsTests = new ContactsServiceFunctionalTests();
             var Contact = ContactsTests.CreateContact(NewCustomer, NewOrganization);
 
+            var ExpireYear = DateTime.Now.Year + 1;
+
             var NewPaymentCard = CreatePaymentCard(NewCustomer, Contact);
             Assert.IsNotNull(NewPaymentCard.Id);
             Assert.AreEqual(NewCustomer.Id, NewPaymentCard.CustomerId);
@@ -33,7 +35,7 @@ namespace Tests.Functional
             Assert.AreEqual("411111", NewPaymentCard.Bin);
             Assert.IsNull(NewPaymentCard.Pan);
             Assert.AreEqual(7, NewPaymentCard.ExpMonth);
-            Assert.AreEqual(2017, NewPaymentCard.ExpYear);
+            Assert.AreEqual(ExpireYear, NewPaymentCard.ExpYear);
 
             var PaymentCardsService = CreateClient().PaymentCards();
 
@@ -47,7 +49,7 @@ namespace Tests.Functional
             Assert.AreEqual("411111", LoadedNewPaymentCard.Bin);
             Assert.IsNull(LoadedNewPaymentCard.Pan);
             Assert.AreEqual(7, LoadedNewPaymentCard.ExpMonth);
-            Assert.AreEqual(2017, LoadedNewPaymentCard.ExpYear);
+            Assert.AreEqual(ExpireYear, LoadedNewPaymentCard.ExpYear);
 
 
             // Create with specific Id
@@ -60,9 +62,11 @@ namespace Tests.Functional
             NewPaymentCard2.Pan = "4111111111111111";            
             NewPaymentCard2.Bin = "411111";
             NewPaymentCard2.ExpMonth = 8;
-            NewPaymentCard2.ExpYear = 2018;
+            NewPaymentCard2.ExpYear = ExpireYear;
             NewPaymentCard2.Brand = "visa";
             NewPaymentCard2.Cvv = "123";
+
+
 
             var CreatedPaymentCard2 = PaymentCardsService.Create(NewPaymentCard2);
             Assert.AreEqual(SpecificCardId, CreatedPaymentCard2.Id);
@@ -72,7 +76,7 @@ namespace Tests.Functional
             Assert.AreEqual("411111", CreatedPaymentCard2.Bin);
             Assert.IsNull(NewPaymentCard.Pan);
             Assert.AreEqual(8, CreatedPaymentCard2.ExpMonth);
-            Assert.AreEqual(2018, CreatedPaymentCard2.ExpYear);
+            Assert.AreEqual(ExpireYear, CreatedPaymentCard2.ExpYear);
             Assert.AreEqual("inactive", CreatedPaymentCard2.Status);
 
 
@@ -99,7 +103,7 @@ namespace Tests.Functional
             Assert.AreEqual("411111", AuthorizedCard.Bin);
             Assert.IsNull(AuthorizedCard.Pan);
             Assert.AreEqual(8, AuthorizedCard.ExpMonth);
-            Assert.AreEqual(2018, AuthorizedCard.ExpYear);
+            Assert.AreEqual(ExpireYear, AuthorizedCard.ExpYear);
             //Assert.AreEqual("active", AuthorizedCard.Status);     // QUESTION: this should be active
 
 
@@ -111,20 +115,22 @@ namespace Tests.Functional
             Assert.AreEqual("411111", DeactivatedCard.Bin);
             Assert.IsNull(DeactivatedCard.Pan);
             Assert.AreEqual(8, DeactivatedCard.ExpMonth);
-            Assert.AreEqual(2018, DeactivatedCard.ExpYear);
+            Assert.AreEqual(ExpireYear, DeactivatedCard.ExpYear);
             Assert.AreEqual("deactivated", DeactivatedCard.Status);
         }
 
 
         public PaymentCard CreatePaymentCard(Customer customer, Contact contact)
         {
+            var ExpireYear = DateTime.Now.Year + 1;
+
             var NewPaymentCard = new PaymentCard();
             NewPaymentCard.CustomerId = customer.Id;
             NewPaymentCard.BillingContactId = contact.Id;
             NewPaymentCard.Pan = "4111111111111111";            
             NewPaymentCard.Bin = "411111";
             NewPaymentCard.ExpMonth = 7;
-            NewPaymentCard.ExpYear = 2017;
+            NewPaymentCard.ExpYear = ExpireYear;
             NewPaymentCard.Brand = "visa";
             NewPaymentCard.Cvv = "123";
 

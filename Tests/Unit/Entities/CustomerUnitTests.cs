@@ -102,19 +102,21 @@ namespace Tests.Unit.Entities
 
 
         [Test]
-        public void TestDefaultCardDefaultIsEqualTo()
+        public void TestDefaultPaymentInstrumentDefaultIsEqualTo()
         {
             var Customer = new Customer();
-            Assert.IsNull(Customer.DefaultCard);
+            Assert.IsNull(Customer.DefaultPaymentInstrument);
         }
 
 
         [Test]
-        public void TestDefaultCardsEqualTo()
+        public void TestDefaultPaymentInstrumentIsEqualTo()
         {
             var Customer = new Customer();
-            Customer.DefaultCard = "DefaultCard5";
-            Assert.AreEqual("DefaultCard5", Customer.DefaultCard);
+            var CurrentPaymentInstrument  = new AchPaymentInstrument();
+
+            Customer.DefaultPaymentInstrument = CurrentPaymentInstrument;
+            Assert.AreEqual(CurrentPaymentInstrument, Customer.DefaultPaymentInstrument);
         }       
     }
 }

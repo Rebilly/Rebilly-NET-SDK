@@ -8,6 +8,6 @@ namespace Rebilly.Entities
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string IpAddress { get; set;  }
-        public string DefaultCard { get; set; }
+        public PaymentInstrument DefaultPaymentInstrument { get; set; }
     }
 }

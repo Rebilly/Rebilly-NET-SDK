@@ -55,7 +55,7 @@ namespace Tests.Functional
         }
 
 
-        public Customer CreateCustomer()
+        public Customer CreateCustomer(PaymentInstrument paymentInstrument = null)
         {
             var NewCustomer = new Customer()
             {
@@ -64,6 +64,9 @@ namespace Tests.Functional
                 LastName = "Smith",
                 IpAddress = "123.123.133.133"
             };
+
+            NewCustomer.DefaultPaymentInstrument = paymentInstrument;
+
 
             var RebillyClient = CreateClient();
             return RebillyClient.Customers().Create(NewCustomer);

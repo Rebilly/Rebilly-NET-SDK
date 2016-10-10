@@ -63,7 +63,7 @@ namespace Tests.Unit.Entities
         {
             var PaymentCardToken = new PaymentCardToken();
 
-            var NewPaymentInstrument = new PaymentInstrument();
+            var NewPaymentInstrument = new PaymentTokenInstrument();
             PaymentCardToken.PaymentInstrument = NewPaymentInstrument;
 
             Assert.AreEqual(NewPaymentInstrument, PaymentCardToken.PaymentInstrument);

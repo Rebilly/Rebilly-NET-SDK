@@ -4,20 +4,20 @@ using Rebilly.Entities;
 namespace Tests.Unit.Entities
 {
     [TestFixture]
-    public class PaymentInstrumentUnitTests
+    public class PaymentTokenInstrumentUnitTests
     {
         [Test]
         public void TestConstructIsInstanceOfEntity()
         {
-            var CurrentPaymentInstrument = new PaymentInstrument();
-            Assert.IsInstanceOf<PaymentInstrument>(CurrentPaymentInstrument);
+            var CurrentPaymentInstrument = new PaymentTokenInstrument();
+            Assert.IsInstanceOf<PaymentTokenInstrument>(CurrentPaymentInstrument);
         }
 
 
         [Test]
         public void TestPanDefaultIsEqualTo()
         {
-            var CurrentPaymentInstrument = new PaymentInstrument();
+            var CurrentPaymentInstrument = new PaymentTokenInstrument();
             Assert.IsNull(CurrentPaymentInstrument.Pan);
         }
 
@@ -25,7 +25,7 @@ namespace Tests.Unit.Entities
         [Test]
         public void TestPanIsEqualTo()
         {
-            var CurrentPaymentInstrument = new PaymentInstrument();
+            var CurrentPaymentInstrument = new PaymentTokenInstrument();
             CurrentPaymentInstrument.Pan = "Pan1";
             Assert.AreEqual("Pan1", CurrentPaymentInstrument.Pan);
         }
@@ -34,7 +34,7 @@ namespace Tests.Unit.Entities
         [Test]
         public void TestExpMonthDefaultIsEqualTo()
         {
-            var CurrentPaymentInstrument = new PaymentInstrument();
+            var CurrentPaymentInstrument = new PaymentTokenInstrument();
             Assert.AreEqual(0,CurrentPaymentInstrument.ExpMonth);
         }
 
@@ -42,7 +42,7 @@ namespace Tests.Unit.Entities
         [Test]
         public void TestExpMonthIsEqualTo()
         {
-            var CurrentPaymentInstrument = new PaymentInstrument();
+            var CurrentPaymentInstrument = new PaymentTokenInstrument();
             CurrentPaymentInstrument.ExpMonth = 3;
             Assert.AreEqual(3, CurrentPaymentInstrument.ExpMonth);
         }
@@ -51,7 +51,7 @@ namespace Tests.Unit.Entities
         [Test]
         public void TestExpYearDefaultIsEqualTo()
         {
-            var CurrentPaymentInstrument = new PaymentInstrument();
+            var CurrentPaymentInstrument = new PaymentTokenInstrument();
             Assert.AreEqual(0, CurrentPaymentInstrument.ExpYear);
         }
 
@@ -59,7 +59,7 @@ namespace Tests.Unit.Entities
         [Test]
         public void TestExpYearIsEqualTo()
         {
-            var CurrentPaymentInstrument = new PaymentInstrument();
+            var CurrentPaymentInstrument = new PaymentTokenInstrument();
             CurrentPaymentInstrument.ExpYear = 2018;
             Assert.AreEqual(2018, CurrentPaymentInstrument.ExpYear);
         }
@@ -68,7 +68,7 @@ namespace Tests.Unit.Entities
         [Test]
         public void TestCvvDefaultIsEqualTo()
         {
-            var CurrentPaymentInstrument = new PaymentInstrument();
+            var CurrentPaymentInstrument = new PaymentTokenInstrument();
             Assert.IsNull(CurrentPaymentInstrument.Cvv);
         }
 
@@ -76,7 +76,7 @@ namespace Tests.Unit.Entities
         [Test]
         public void TestCvvIsEqualTo()
         {
-            var CurrentPaymentInstrument = new PaymentInstrument();
+            var CurrentPaymentInstrument = new PaymentTokenInstrument();
             CurrentPaymentInstrument.Cvv = "Cvv1";
             Assert.AreEqual("Cvv1", CurrentPaymentInstrument.Cvv);
         }
@@ -85,7 +85,7 @@ namespace Tests.Unit.Entities
         [Test]
         public void TestRoutingNumberDefaultIsEqualTo()
         {
-            var CurrentPaymentInstrument = new PaymentInstrument();
+            var CurrentPaymentInstrument = new PaymentTokenInstrument();
             Assert.AreEqual(0, CurrentPaymentInstrument.RoutingNumber);
         }
 
@@ -93,7 +93,7 @@ namespace Tests.Unit.Entities
         [Test]
         public void TestRoutingNumberIsEqualTo()
         {
-            var CurrentPaymentInstrument = new PaymentInstrument();
+            var CurrentPaymentInstrument = new PaymentTokenInstrument();
             CurrentPaymentInstrument.RoutingNumber = 2018;
             Assert.AreEqual(2018, CurrentPaymentInstrument.RoutingNumber);
         }
@@ -102,7 +102,7 @@ namespace Tests.Unit.Entities
         [Test]
         public void TestAccountNumberDefaultIsEqualTo()
         {
-            var CurrentPaymentInstrument = new PaymentInstrument();
+            var CurrentPaymentInstrument = new PaymentTokenInstrument();
             Assert.AreEqual(0, CurrentPaymentInstrument.AccountNumber);
         }
 
@@ -110,7 +110,7 @@ namespace Tests.Unit.Entities
         [Test]
         public void TestAccountNumberIsEqualTo()
         {
-            var CurrentPaymentInstrument = new PaymentInstrument();
+            var CurrentPaymentInstrument = new PaymentTokenInstrument();
             CurrentPaymentInstrument.AccountNumber = 2018;
             Assert.AreEqual(2018, CurrentPaymentInstrument.AccountNumber);
         }
@@ -119,7 +119,7 @@ namespace Tests.Unit.Entities
         [Test]
         public void TestAccountTypeDefaultIsEqualTo()
         {
-            var CurrentPaymentInstrument = new PaymentInstrument();
+            var CurrentPaymentInstrument = new PaymentTokenInstrument();
             Assert.IsNull(CurrentPaymentInstrument.AccountType);
         }
 
@@ -127,7 +127,7 @@ namespace Tests.Unit.Entities
         [Test]
         public void TestAccountTypeIsEqualTo()
         {
-            var CurrentPaymentInstrument = new PaymentInstrument();
+            var CurrentPaymentInstrument = new PaymentTokenInstrument();
             CurrentPaymentInstrument.AccountType = "AccountType1";
             Assert.AreEqual("AccountType1", CurrentPaymentInstrument.AccountType);
         }
@@ -136,7 +136,7 @@ namespace Tests.Unit.Entities
         [Test]
         public void TestBankNameDefaultIsEqualTo()
         {
-            var CurrentPaymentInstrument = new PaymentInstrument();
+            var CurrentPaymentInstrument = new PaymentTokenInstrument();
             Assert.IsNull(CurrentPaymentInstrument.BankName);
         }
 
@@ -144,7 +144,7 @@ namespace Tests.Unit.Entities
         [Test]
         public void TestBankNameIsEqualTo()
         {
-            var CurrentPaymentInstrument = new PaymentInstrument();
+            var CurrentPaymentInstrument = new PaymentTokenInstrument();
             CurrentPaymentInstrument.BankName = "BankName1";
             Assert.AreEqual("BankName1", CurrentPaymentInstrument.BankName);
         }

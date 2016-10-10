@@ -29,13 +29,13 @@ namespace Tests.Functional
             var BankAccountsService = CreateClient().BankAccounts();
  
             // I'm getting a 500 error here!
-            /*
             // Create
-            var NewBankAccount = CreateBankAccount(NewOrganization, NewCustomer, NewContact);
-            Assert.IsNotNull(NewBankAccount.Id);
-            Assert.AreEqual(NewCustomer.Id, NewBankAccount.CustomerId);
+            //var NewBankAccount = CreateBankAccount(NewOrganization, NewCustomer, NewContact);
+            //Assert.IsNotNull(NewBankAccount.Id);
+            //Assert.AreEqual(NewCustomer.Id, NewBankAccount.CustomerId);
 
 
+            /*
             // Load
             var LoadedBankAccount = BankAccountsService.Load(NewBankAccount.Id);
             Assert.IsNotNull(LoadedBankAccount.Id);
@@ -57,15 +57,18 @@ namespace Tests.Functional
             {
                 CustomerId = customer.Id,
                 ContactId = contact.Id,
-                Name = "My bank",
-                AccountType = "checking",
-                RoutingNumber = "1234",
-                AccountNumber = "1235"
-                //CustomFields = new Dictionary<string, string>() {  "Test", "Test2"}
+                BankName = "My bank",
+                AccountType = "savings",
+                RoutingNumber = "123456789",
+                AccountNumber = "12345678912345",
+                Status = "active"
             };
 
 
             var RebillyClient = CreateClient();
+
+            RebillyClient.Middleware.Add(new Rebilly.Middleware.AnalyzerMiddlware(null));
+
             return RebillyClient.BankAccounts().Create(NewBankAccount);
         }
 
