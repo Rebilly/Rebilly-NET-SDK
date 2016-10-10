@@ -1,7 +1,7 @@
 ﻿
 namespace Rebilly.Entities
 {
-    public abstract class GatewayConfig
+    public class GatewayConfig
     {
 
     }
