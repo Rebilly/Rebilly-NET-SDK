@@ -10,6 +10,7 @@ namespace Rebilly.Entities
         public string AccountType { get ; set;}
         public string RoutingNumber { get ; set;}
         public string AccountNumber { get ; set;}
+        public string Token { get; set; }
         public string Status { get; set; }
 
     }

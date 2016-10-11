@@ -45,10 +45,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\AchPaymentInstrument.cs" />
+    <Compile Include="Entities\CashPaymentInstrument.cs" />
     <Compile Include="Entities\Invoice.cs" />
     <Compile Include="Entities\PaymentCardAuthorizationInfo.cs" />
+    <Compile Include="Entities\PaymentCardPaymentInstrument.cs" />
     <Compile Include="Entities\PaymentInstrument.cs" />
     <Compile Include="Entities\PaymentTokenInstrument.cs" />
+    <Compile Include="Entities\PayPalPaymentInstrument.cs" />
     <Compile Include="Entities\ThreeDSecure.cs" />
     <Compile Include="Entities\Transaction.cs" />
     <Compile Include="Middleware\SignatureAuthenticationMiddleware.cs" />

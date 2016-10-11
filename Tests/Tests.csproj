@@ -62,10 +62,13 @@
     <Compile Include="Functional\WebsitesServiceFunctionalTests.cs" />
     <Compile Include="Integration\SearchArgumentsConverterIntegrationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Unit\Entities\PaymentCardPaymentInstrumentUnitTests.cs" />
     <Compile Include="Unit\Entities\AchPaymentInstrumentUnitTests.cs" />
+    <Compile Include="Unit\Entities\CashPaymentInstrumentUnitTests.cs" />
     <Compile Include="Unit\Entities\InvoiceUnitTests.cs" />
     <Compile Include="Unit\Entities\PaymentCardAuthorizationInfoUnitTests.cs" />
     <Compile Include="Unit\Entities\PaymentInstrumentUnitTests.cs" />
+    <Compile Include="Unit\Entities\PayPalPaymentInstrumentUnitTests.cs" />
     <Compile Include="Unit\Entities\ThreeDSecureUnitTests.cs" />
     <Compile Include="Unit\SignatureUnitTests.cs" />
     <Compile Include="TestConfig.cs" />

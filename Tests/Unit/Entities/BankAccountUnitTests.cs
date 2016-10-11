@@ -150,5 +150,22 @@ namespace Tests.Unit.Entities
             BankAccount.Status = "active";
             Assert.AreEqual("active", BankAccount.Status);
         }
+
+
+        [Test]
+        public void TestTokenDefaultIsEqualTo()
+        {
+            var BankAccount = new BankAccount();
+            Assert.IsNull(BankAccount.Token);
+        }
+
+
+        [Test]
+        public void TestTokenIsEqualTo()
+        {
+            var BankAccount = new BankAccount();
+            BankAccount.Token = "token1";
+            Assert.AreEqual("token1", BankAccount.Token);
+        }
     }
 }

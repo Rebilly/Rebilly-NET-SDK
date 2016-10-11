@@ -18,6 +18,13 @@ namespace Tests.Unit.Entities
 
 
         [Test]
+        public void TestMethodIsEqualTo()
+        {
+            var PaymentInstrument = new AchPaymentInstrument();
+            Assert.AreEqual("ach", PaymentInstrument.Method);
+        }
+
+        [Test]
         public void TestBankAccountIdDefaultIsEqualTo()
         {
             var PaymentInstrument = new AchPaymentInstrument();
