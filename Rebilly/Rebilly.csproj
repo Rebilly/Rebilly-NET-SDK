@@ -52,6 +52,7 @@
     <Compile Include="Entities\PaymentInstrument.cs" />
     <Compile Include="Entities\PaymentTokenInstrument.cs" />
     <Compile Include="Entities\PayPalPaymentInstrument.cs" />
+    <Compile Include="Entities\SubscriptionCancelPolicy.cs" />
     <Compile Include="Entities\ThreeDSecure.cs" />
     <Compile Include="Entities\Transaction.cs" />
     <Compile Include="Middleware\SignatureAuthenticationMiddleware.cs" />

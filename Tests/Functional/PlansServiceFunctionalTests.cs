@@ -12,6 +12,14 @@ namespace Tests.Functional
     [TestFixture]
     public class PlansServiceFunctionalTests : TestBase
     {
+        public DateTime ExpireTime { get; set; }
+
+        public PlansServiceFunctionalTests()
+        {
+            ExpireTime = DateTime.Parse((DateTime.UtcNow.Year + 1).ToString() + "-02-10 01:00:01");
+        }
+
+
         [Test]
         public void TestCreateUpdateLoadDelete()
         {
@@ -19,7 +27,7 @@ namespace Tests.Functional
 
             // Create
             Assert.IsNotNull(NewPlan.Id);
-            Assert.IsFalse(NewPlan.IsActive);
+            Assert.IsTrue(NewPlan.IsActive);
             Assert.AreEqual("Current Plan", NewPlan.Name);
             Assert.AreEqual("This is a nice description!", NewPlan.Description);
             //Assert.AreEqual("This is a <strong>rich</strong> description!", NewPlan.RichDescription);
@@ -39,14 +47,14 @@ namespace Tests.Functional
             Assert.AreEqual(3, NewPlan.ContractTermLength);
             Assert.AreEqual(4, NewPlan.RecurringPeriodLimit);
 
-            Assert.AreEqual(12, NewPlan.MinQuantity);
-            Assert.AreEqual(123, NewPlan.MaxQuantity);
+            Assert.AreEqual(1, NewPlan.MinQuantity);
+            Assert.AreEqual(5, NewPlan.MaxQuantity);
 
 
             var PlansServies = CreateClient().Plans();
 
             // Update
-            NewPlan.IsActive = true;
+            NewPlan.IsActive = false;
             NewPlan.Name = "Current Plan 2";
             NewPlan.Description = "This is a nice description 2";
             NewPlan.Currency = "USD";
@@ -71,7 +79,7 @@ namespace Tests.Functional
 
             var UpdatedPlan = PlansServies.Update(NewPlan);
             Assert.IsNotEmpty(UpdatedPlan.Id);
-            Assert.IsTrue(UpdatedPlan.IsActive);
+            Assert.IsFalse(UpdatedPlan.IsActive);
             Assert.AreEqual("Current Plan 2", UpdatedPlan.Name);
             Assert.AreEqual("This is a nice description 2", UpdatedPlan.Description);
             Assert.AreEqual("USD", UpdatedPlan.Currency);
@@ -96,7 +104,7 @@ namespace Tests.Functional
 
             // Load
             var LoadedPlan = PlansServies.Load(UpdatedPlan.Id);
-            Assert.IsTrue(LoadedPlan.IsActive);
+            Assert.IsFalse(LoadedPlan.IsActive);
             Assert.AreEqual("Current Plan 2", LoadedPlan.Name);
             Assert.AreEqual("This is a nice description 2", LoadedPlan.Description);
             Assert.AreEqual("USD", LoadedPlan.Currency);
@@ -126,11 +134,13 @@ namespace Tests.Functional
 
         public Plan CreatePlan()
         {
+
+
             var NewPlan = new Plan();
-            NewPlan.IsActive = false;
+            NewPlan.IsActive = true;
             NewPlan.Name = "Current Plan";
             NewPlan.Description = "This is a nice description!";
-            //NewPlan.RichDescription = "This is a <strong>rich</strong> description!";
+            NewPlan.RichDescription = "This is a <strong>rich</strong> description!";
             NewPlan.Currency= "AUD";
 
             NewPlan.RecurringAmount = 12.95M;
@@ -142,14 +152,14 @@ namespace Tests.Functional
             NewPlan.TrialPeriodLength = 2;
 
             NewPlan.SetupAmount = 112.95M;
-            NewPlan.ExpireTime = DateTime.Parse("2017-02-10 01:00:01");
+            NewPlan.ExpireTime = ExpireTime;
 
             NewPlan.ContractTermUnit = "day";
             NewPlan.ContractTermLength = 3;
             NewPlan.RecurringPeriodLimit = 4;
 
-            NewPlan.MinQuantity = 12;
-            NewPlan.MaxQuantity = 123;
+            NewPlan.MinQuantity = 1;
+            NewPlan.MaxQuantity = 5;
 
             var PlansServies = CreateClient().Plans();
             return PlansServies.Create(NewPlan);

@@ -7,5 +7,11 @@ namespace Rebilly.Services
     {
         public SubscriptionsService() : base() { }
         public SubscriptionsService(string dataProviderName) : base(dataProviderName) { }
+
+
+        public Subscription Cancel(string subscriptionId, string policy = "at-next-renewal")
+        {
+            return Post<SubscriptionCancelPolicy>("/" + subscriptionId + "/cancel/", new SubscriptionCancelPolicy() { Policy = policy });
+        }
     }
 }

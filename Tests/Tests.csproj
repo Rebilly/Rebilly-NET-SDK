@@ -69,6 +69,7 @@
     <Compile Include="Unit\Entities\PaymentCardAuthorizationInfoUnitTests.cs" />
     <Compile Include="Unit\Entities\PaymentInstrumentUnitTests.cs" />
     <Compile Include="Unit\Entities\PayPalPaymentInstrumentUnitTests.cs" />
+    <Compile Include="Unit\Entities\SubscriptionCancelPolicyUnitTests.cs" />
     <Compile Include="Unit\Entities\ThreeDSecureUnitTests.cs" />
     <Compile Include="Unit\SignatureUnitTests.cs" />
     <Compile Include="TestConfig.cs" />
