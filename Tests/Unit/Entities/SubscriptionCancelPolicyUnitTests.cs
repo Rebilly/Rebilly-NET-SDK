@@ -10,7 +10,7 @@ namespace Tests.Unit.Entities
         public void TestConstructIsNotNull()
         {
             var CurrentSubscriptionCancelPolicy = new SubscriptionCancelPolicy();
-            Assert.IsInstanceOf<GatewayConfig>(CurrentSubscriptionCancelPolicy);
+            Assert.IsNotNull(CurrentSubscriptionCancelPolicy);
         }
 
 
@@ -18,7 +18,7 @@ namespace Tests.Unit.Entities
         public void TestPolicyDefaultIsEqualTo()
         {
             var CurrentSubscriptionCancelPolicy = new SubscriptionCancelPolicy();
-            Assert.IsEmpty(CurrentSubscriptionCancelPolicy.Policy);
+            Assert.IsNull(CurrentSubscriptionCancelPolicy.Policy);
         }
 
 
@@ -28,7 +28,7 @@ namespace Tests.Unit.Entities
             var CurrentSubscriptionCancelPolicy = new SubscriptionCancelPolicy();
             CurrentSubscriptionCancelPolicy.Policy = "now-with-prorata-credit";
 
-            Assert.IsEmpty("now-with-prorata-credit",CurrentSubscriptionCancelPolicy.Policy);
+            Assert.AreEqual("now-with-prorata-credit",CurrentSubscriptionCancelPolicy.Policy);
         }
     }
 }
