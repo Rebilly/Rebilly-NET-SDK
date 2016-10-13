@@ -4,7 +4,7 @@ using Rebilly.Entities;
 namespace Tests.Unit.Entities
 {
     [TestFixture]
-    public class A1A1GatewayConfigUnitTests
+    public class A1GatewayConfigUnitTests
     {
         [Test]
         public void TestConstructIsInstanceOfEntity()

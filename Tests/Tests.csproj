@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Examples\CreateCustomerExampleTest.cs" />
+    <Compile Include="Functional\AuthenticationOptionsFunctionalTests.cs" />
     <Compile Include="Functional\BankAccountsServiceFunctionalTests.cs" />
     <Compile Include="Functional\BlacklistsServiceFunctionalTests.cs" />
     <Compile Include="Functional\ContactsServiceFunctionalTests.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="Functional\WebsitesServiceFunctionalTests.cs" />
     <Compile Include="Integration\SearchArgumentsConverterIntegrationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Unit\Entities\AuthenticationOptionUnitTests.cs" />
     <Compile Include="Unit\Entities\PaymentCardPaymentInstrumentUnitTests.cs" />
     <Compile Include="Unit\Entities\AchPaymentInstrumentUnitTests.cs" />
     <Compile Include="Unit\Entities\CashPaymentInstrumentUnitTests.cs" />

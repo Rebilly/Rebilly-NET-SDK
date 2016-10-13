@@ -139,6 +139,12 @@ namespace Rebilly
         }
 
 
+        public AuthenticationOptionsService AuthenticationOptions()
+        {
+            return GetService<AuthenticationOptionsService>();
+        }
+
+
         public TService GetService<TService>() where TService : ProviderBase, IService, new()
         {
             var Factory = new ServiceFactory();

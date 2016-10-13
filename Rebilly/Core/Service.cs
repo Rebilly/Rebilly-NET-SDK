@@ -51,18 +51,32 @@ namespace Rebilly.Core
         }
 
 
+        public TEntity GetSingle(SearchArguments arguments = null)
+        {
+            BeforeAction();
+
+            var ArgumentsDictionary = CreateArgumentsDictionary(arguments);
+            return DataProvider.GetSingle(GetMappedEntityName(), ArgumentsDictionary);
+        }
+
+
+        private Dictionary<string, string> CreateArgumentsDictionary(SearchArguments arguments = null)
+        {
+            if(arguments == null)
+            {
+                return null;
+            }
+
+            var Converter = new SearchArgumentsConverter();
+            return Converter.ToDictionary(arguments);
+        }
+
         public IList<TEntity> Search(SearchArguments arguments = null)
         {
             BeforeAction();
 
-            Dictionary<string, string> Arguments = null;
-            if(arguments != null)
-            {
-                var Converter = new SearchArgumentsConverter();
-                Arguments = Converter.ToDictionary(arguments);
-            }
-
-            return DataProvider.Get(GetMappedEntityName(), Arguments);
+            var ArgumentsDictionary = CreateArgumentsDictionary(arguments);
+            return DataProvider.Get(GetMappedEntityName(), ArgumentsDictionary);
         }
 
 

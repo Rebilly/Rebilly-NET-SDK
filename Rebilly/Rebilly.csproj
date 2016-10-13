@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\AchPaymentInstrument.cs" />
+    <Compile Include="Entities\AuthenticationOption.cs" />
     <Compile Include="Entities\CashPaymentInstrument.cs" />
     <Compile Include="Entities\Invoice.cs" />
     <Compile Include="Entities\PaymentCardAuthorizationInfo.cs" />
@@ -53,9 +54,11 @@
     <Compile Include="Entities\PaymentTokenInstrument.cs" />
     <Compile Include="Entities\PayPalPaymentInstrument.cs" />
     <Compile Include="Entities\SubscriptionCancelPolicy.cs" />
+    <Compile Include="Entities\SubscriptionSwitch.cs" />
     <Compile Include="Entities\ThreeDSecure.cs" />
     <Compile Include="Entities\Transaction.cs" />
     <Compile Include="Middleware\SignatureAuthenticationMiddleware.cs" />
+    <Compile Include="Services\AuthenticationOptionsService.cs" />
     <Compile Include="Services\InvoicesService.cs" />
     <Compile Include="Services\ThreeDSecuresService.cs" />
     <Compile Include="Signature.cs" />

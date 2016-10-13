@@ -11,6 +11,12 @@ namespace Rebilly.Core
             return null;
         }
 
+        public override TEntity GetSingle(string path, Dictionary<string, string> arguments = null)
+        {
+            return default(TEntity);
+        }
+
+
         public override TEntity Load(string path, string id)
         {
             return default(TEntity);

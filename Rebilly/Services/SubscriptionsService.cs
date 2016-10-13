@@ -13,5 +13,11 @@ namespace Rebilly.Services
         {
             return Post<SubscriptionCancelPolicy>("/" + subscriptionId + "/cancel/", new SubscriptionCancelPolicy() { Policy = policy });
         }
+
+
+        public Subscription Switch(string subscriptionId, SubscriptionSwitch subscriptionSwitch)
+        {
+            return Post<SubscriptionSwitch>("/" + subscriptionId + "/switch/", subscriptionSwitch);
+        }
     }
 }

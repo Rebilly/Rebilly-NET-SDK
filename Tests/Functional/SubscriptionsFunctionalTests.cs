@@ -72,6 +72,24 @@ namespace Tests.Functional
             Assert.IsNotNull(LoadedSubscription.RenewalTime);
             Assert.IsNotNull(LoadedSubscription.CreatedTime);
 
+
+
+
+            /*
+             * TODO: this returns a 500 error request some support
+            // Switch
+            var SwitchPlan = PlansTests.CreatePlan();
+            var SwitchWebsite = WebsitesTests.CreateWebsite();
+
+            var NewSubscriptionSwitch = new SubscriptionSwitch();
+            NewSubscriptionSwitch.PlanId = SwitchPlan.Id;
+            NewSubscriptionSwitch.WebsiteId = SwitchWebsite.Id;
+            NewSubscriptionSwitch.Quantity = 1;
+            NewSubscriptionSwitch.Policy = "at-next-renewal";
+
+            var SwitchedSubscription = SubscriptionsService.Switch(NewSubscription.Id, NewSubscriptionSwitch);
+             */
+
             // Cancel
             var CanceledSubscription = SubscriptionsService.Cancel(NewSubscription.Id);
             Assert.IsNotNull(CanceledSubscription.Id);

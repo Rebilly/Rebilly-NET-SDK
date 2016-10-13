@@ -24,6 +24,14 @@ namespace Rebilly.Core
             return JsonConvert.DeserializeObject<List<TEntity>>(ResponseText);        
         }
 
+        public override TEntity GetSingle(string path, Dictionary<string, string> arguments = null)
+        {
+            var RelativeUrl = CreateUrl(path, arguments);
+            var ResponseText = GetJsonText(RelativeUrl, HttpMethod.Get, "");
+
+            return JsonConvert.DeserializeObject<TEntity>(ResponseText);
+        }
+
 
         public override TEntity Create(string path, TEntity entity)
         {
